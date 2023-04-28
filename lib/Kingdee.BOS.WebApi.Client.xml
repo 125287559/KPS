@@ -1,0 +1,1556 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kingdee.BOS.WebApi.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Kingdee.BOS.WebApi.Client.ApiClient">
+            <summary>
+            WebApi客户端
+            需要支持Https协议则需要生成两个客户端
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.GetServerUrl">
+            <summary>
+            获取服务器地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ApiClient._defaultTimeout">
+            <summary>
+            HttpWebRequest.Timeout请求的默认超时设置。
+            </summary>
+            <remarks>
+            HttpWebRequest默认100s，这里改为300s。
+            </remarks>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.#ctor">
+            <summary>
+            默认无参构造
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.#ctor(System.String)">
+            <summary>
+            传入服务器地址，返回ApiClient对象实例。
+            </summary>
+            <param name="serverUrl">服务器地址。</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.#ctor(System.String,System.Int32)">
+            <summary>
+            传入服务器地址以及请求超时时间设置，返回ApiClient对象实例。
+            </summary>
+            <param name="serverUrl">服务器地址。</param>
+            <param name="timeout">HttpWebRequest.Timeout请求的默认超时设置,默认5分钟,单位为秒。</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.#ctor(System.String,Kingdee.BOS.WebApi.Client.FailCallbackHandler)">
+            <summary>
+            传入服务器地址以及缺省异常处理回调函数，返回ApiClient对象实例。
+            </summary>
+            <param name="serverUrl">服务器地址。</param>
+            <param name="defaultfailcallback">缺省异常处理回调函数。</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.#ctor(System.String,Kingdee.BOS.WebApi.Client.FailCallbackHandler,System.Int32)">
+            <summary>
+            传入服务器地址、缺省异常处理回调函数以及请求超时时间设置，返回ApiClient对象实例。
+            </summary>
+            <param name="serverUrl">服务器地址。</param>
+            <param name="defaultfailcallback">缺省异常处理回调函数。</param>
+            <param name="timeout">HttpWebRequest.Timeout请求的默认超时设置,默认5分钟,单位为秒。</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoadConfig(Kingdee.BOS.WebApi.Client.HttpClient)">
+            <summary>
+            从应用程序配置中装装API配置
+            </summary>
+            <param name="client"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.CreateAsyncRequest(System.String,System.Object[])">
+            <summary>
+            创建异步RPC请求
+            </summary>
+            <param name="servicename">服务名称</param>
+            <param name="parameters">参数</param>
+            <returns>请求</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.CreateRequest(System.String,System.Object[])">
+            <summary>
+            创建同步RPC请求
+            </summary>
+            <param name="servicename">服务名称</param>
+            <param name="parameters">参数</param>
+            <returns>请求</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.CreateProgressQuery(System.String)">
+            <summary>
+            创建进度查询请求
+            </summary>
+            <param name="reqId">请求Id</param>
+            <returns>请求</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.InitClient(System.String,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            初始化认证信息,经此初始化后，所有的WebAPI调用 不再需要再调用登录。
+            </summary>
+            <param name="acctID">数据中心ID</param>
+            <param name="appID">应用ID</param>
+            <param name="appSec">密钥</param>
+            <param name="userName">用户</param>
+            <param name="lcid">语言ID,1033,2052</param>
+            <param name="orgNum">组织Num,null:表示不指定组织，则取系统默认的组织</param>
+            <param name="serverUrl">服务器地址，默认https://api.kingdee.com/kdapi</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.Logout">
+            <summary>
+            注销
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.Login(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            登陆验证,只返回成功否，登录失败无法判定原因。
+            </summary>
+            <param name="dbId"></param>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.ValidateLogin(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            登陆验证,返回服务端完整结果。
+            </summary>
+            <param name="dbId"></param>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.ValidateLoginByOrgNumber(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            可指定组织编码登陆验证,返回服务端完整结果。
+            </summary>
+            <param name="dbId"></param>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="lcid"></param>
+            <param name="orgNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoginByOrgNumber(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            可指定组织编码登陆验证,返回服务端完整结果。
+            </summary>
+            <param name="dbId"></param>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="lcid"></param>
+            <param name="orgNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoginByDomain(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            域登录接口
+            </summary>
+            <param name="dbId"></param>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoginByAppSecret(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="dbId">数据中心ID</param>
+            <param name="userName">用户名称</param>
+            <param name="appId">第三方系统应用Id</param>
+            <param name="appSecret">第三方系统应用秘钥</param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoginBySign(System.String,System.String,System.String,System.Int64,System.String,System.Int32)">
+            <summary>
+            第三方系统登录授权，通过签名
+            </summary>
+            <param name="dbId"></param>
+            <param name="userName"></param>
+            <param name="appId"></param>
+            <param name="timestamp"></param>
+            <param name="sign"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoginBySimplePassport(System.String,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="passportForBase64">证书(Base64编码)</param>
+            <param name="lcid">多语言ID</param>
+            <returns>登录结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoginByMobileCard(System.String,System.String,System.Int32)">
+            <summary>
+            移动刷卡登陆
+            </summary>
+            <param name="passportForBase64">卡的加密信息</param>
+            <param name="customizationParameter">自定义参数</param>
+            <param name="lcid">多语言id</param>
+            <returns>登陆结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.Execute``1(System.String,System.Object[])">
+            <summary>
+            执行RPC
+            </summary>
+            <typeparam name="T">返回类型</typeparam>
+            <param name="servicename">服务名称</param>
+            <param name="parameters">服务入口参数</param>
+            <returns>执行结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.Execute``1(System.String,System.Object[],Kingdee.BOS.WebApi.Client.FailCallbackHandler,System.Int32)">
+            <summary>
+            执行RPC
+            </summary>
+            <typeparam name="T">返回类型</typeparam>
+            <param name="servicename">服务名称</param>
+            <param name="parameters">服务入口参数</param>
+            <param name="failcallback">请求失败或异常回调函数</param>
+            <param name="timeout">请求超时设置，单位：秒</param>
+            <returns>执行结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.ExecuteAsync``1(System.String,System.Action{``0},System.Object[],Kingdee.BOS.WebApi.Client.ProgressChangedHandler,Kingdee.BOS.WebApi.Client.FailCallbackHandler,System.Int32,System.Int32)">
+            <summary>
+            异步执行RPC
+            </summary>
+            <typeparam name="T">返回类型</typeparam>
+            <param name="servicename">服务名称</param>
+            <param name="successCallback">请求成功回调函数</param>
+            <param name="parameters">参数</param>
+            <param name="progressCallback">进度汇报回调函数</param>
+            <param name="failcallback">请求失败或异常回调函数</param>
+            <param name="timeout">请求超时设置，单位：秒</param>
+            <param name="reportInterval">汇报进度时间间隔，单位：秒</param>
+            <returns>RPC请求</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.Call(Kingdee.BOS.WebApi.Client.ApiRequest,Kingdee.BOS.WebApi.Client.FailCallbackHandler)">
+            <summary>
+            执行请求
+            </summary>
+            <param name="request">请求</param>
+            <param name="failcallback">请求失败或异常回调函数</param>
+            <returns>请求相应Json文本</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.Call``1(Kingdee.BOS.WebApi.Client.ApiRequest,Kingdee.BOS.WebApi.Client.FailCallbackHandler)">
+            <summary>
+            执行请求
+            </summary>
+            <typeparam name="T">返回类型</typeparam>
+            <param name="request">请求</param>
+            <param name="failcallback">请求失败或异常回调函数</param>
+            <returns>执行结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.CallAsync``1(Kingdee.BOS.WebApi.Client.ApiRequest,System.Action{Kingdee.BOS.WebApi.Client.AsyncResult{``0}},Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32,System.Int32)">
+            <summary>
+            异步执行请求
+            </summary>
+            <typeparam name="T">返回类型</typeparam>
+            <param name="request">请求</param>
+            <param name="callback">执行结构回调函数</param>
+            <param name="progressCallback">进度汇报回调函数</param>
+            <param name="timeout">请求超时设置，单位：秒</param>
+            <param name="reportInterval">汇报进度时间间隔，单位：秒</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.ValidateLogin2(System.String,System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            登陆验证带踢出
+            </summary>
+            <param name="dbId"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="isKickOff"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoginByAppSecret2(System.String,System.String,System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="dbId">数据中心ID</param>
+            <param name="userName">用户名称</param>
+            <param name="appId">第三方系统应用Id</param>
+            <param name="appSecret">第三方系统应用秘钥</param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoginBySign2(System.String,System.String,System.String,System.Int64,System.String,System.Boolean,System.Int32)">
+            <summary>
+            第三方系统登录授权，通过签名
+            </summary>
+            <param name="dbId"></param>
+            <param name="userName"></param>
+            <param name="appId"></param>
+            <param name="timestamp"></param>
+            <param name="sign"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiClient.LoginBySimplePassport2(System.String,System.Boolean,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="passportForBase64">证书(Base64编码)</param>
+            <param name="lcid">多语言ID</param>
+            <returns>登录结果</returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.FailCallbackHandler">
+            <summary>
+            异常委托
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.ProgressChangedHandler">
+            <summary>
+            进度汇报委托
+            </summary>
+            <param name="pogress"></param>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.AsyncResult`1">
+            <summary>
+            异步执行结果
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.AsyncResult`1.Successful">
+            <summary>
+            是否执行成功
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.AsyncResult`1.ReturnValue">
+            <summary>
+            返回值
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.AsyncResult`1.Exception">
+            <summary>
+            RPC服务调用异常信息
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.DataEntities.BaseEntify">
+            <summary>
+            基础对象
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.DataEntities.BaseEntify.ToJson">
+            <summary>
+            序列化为json
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.DataEntities.BaseEntify.Parse``1(System.String)">
+            <summary>
+            解析对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.DataEntities.SuccessEntity">
+            <summary>
+            成功的对象
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.DataEntities.RepoError">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.DataEntities.RepoStatus">
+            <summary>
+            RepoStatus
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.DataEntities.Repo.Result">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.DataEntities.RepoResult">
+            <summary>
+            RepoResult
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.DataEntities.SavaParam`1">
+            <summary>
+            保存参数基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.DataEntities.SavaParam`1.NeedReturnFields">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.DataEntities.SavaParam`1.NeedUpdateFields">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.DataEntities.SavaParam`1.Model">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.DataEntities.SaveResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.DataEntities.SaveResult.Result">
+            <summary>
+            Result
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.HeaderContainer.GetHeaders(System.Uri)">
+            <summary>
+            Get all header(s)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.HeaderContainer.GetNonce">
+            <summary>
+            自定义的算法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.HeaderContainer.GetTimestamp">
+            <summary>
+            (Unix时间戳,定义为从格林威治时间1970年01月01日00时00分00秒起至现在的总秒数
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.DataCenter">
+            <summary>
+            数据中心基础类
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.DataCenter.ToString">
+            <summary>
+            转化为字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.DataCenter.Id">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.DataCenter.Number">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.DataCenter.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.ExceptionWrapper">
+            <summary>
+            服务端异常信息封装
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ExceptionWrapper.#ctor">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ExceptionWrapper.WrapEx(System.Exception)">
+            <summary>
+            将Exception转换为ExceptionWrapper对象
+            </summary>
+            <param name="ex">源对象</param>
+            <returns>目标对象</returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ExceptionWrapper.IsEmpty">
+            <summary>
+            是否为空
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ExceptionWrapper.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ExceptionWrapper.HelpLink">
+            <summary>
+            帮助链接
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ExceptionWrapper.Message">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ExceptionWrapper.Source">
+            <summary>
+            产生异常的对象或应用名称
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ExceptionWrapper.StackTrace">
+            <summary>
+            异常堆栈
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ExceptionWrapper.TargetSite">
+            <summary>
+            抛出异常的方法
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ExceptionWrapper.ExceptionType">
+            <summary>
+            异常类型
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.ApiRequest">
+            <summary>
+            WebApi请求
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.JsonObject">
+            <summary>
+            Json对象
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonObject.#ctor">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonObject.Parse(System.String)">
+            <summary>
+            解析Json串为JsonObject
+            </summary>
+            <param name="json">Json字符串</param>
+            <returns>JsonObject对象</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonObject.Deserialize``1(System.String)">
+            <summary>
+            反序列化
+            规范：String、Enum、Byte、Int、Long、Decimal、DateTime,Bool不反序列化，其余类型才进行反序列化
+            </summary>
+            <typeparam name="T">目标对象类型</typeparam>
+            <param name="json">Json字符串</param>
+            <returns>目标对象</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonObject.SetValue(System.String,System.Object)">
+            <summary>
+            设置属性值
+            </summary>
+            <param name="prop">属性名称</param>
+            <param name="v">属性值</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonObject.GetValue``1(System.String)">
+            <summary>
+            获取属性值
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="prop">属性名</param>
+            <returns>属性值</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonObject.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonObject.ToString">
+            <summary>
+            转换为Json字符串
+            </summary>
+            <returns>Json串</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiRequest.#ctor(System.String,System.Boolean,System.Text.Encoding,System.Net.CookieContainer)">
+            <summary>
+            构造
+            </summary>
+            <param name="serverUrl">服务器地址</param>
+            <param name="async">是否异步</param>
+            <param name="encoder">编码</param>
+            <param name="cookies">Cookie容器</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiRequest.ToJsonString">
+            <summary>
+            转换为Json串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiRequest.Abort">
+            <summary>
+            终止请求
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiRequest.GetCerFile">
+            <summary>
+            交互环境:取当前目录或父组目录
+            非交互环境:当前目录或App_Data目录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiRequest.TryToGetCerFile(System.String)">
+            <summary>
+            优先： 机器名相同的证书
+            其次： 通用证书 K3CloudCert.cer
+            </summary>
+            <param name="dirName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ApiRequest.IsAsync">
+            <summary>
+            是否为异步请求
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ApiRequest.AuthInfor">
+            <summary>
+            认证信息
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ApiRequest.CookiesContainer">
+            <summary>
+            Cookie容器
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ApiRequest.Encoder">
+            <summary>
+            编码方式
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ApiRequest.ServerUrl">
+            <summary>
+            服务器地址
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ApiRequest.ServiceUri">
+            <summary>
+            服务URL
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ApiRequest.ClientIdentity">
+            <summary>
+            客户端标识(白名单)
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ApiRequest.RequestId">
+            <summary>
+            请求Id
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ApiRequest.AutoGetLastProgress">
+            <summary>
+            当请求完成时，是否自动回去最后的进度信息
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.ApiRequest.SecurityProtocolTypeEnum">
+            <summary>
+            Custom SecurityProtocolType
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ApiRequest.SecurityProtocolTypeEnum.Ssl3">
+            <summary>
+            SSL3
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ApiRequest.SecurityProtocolTypeEnum.Tls">
+            <summary>
+            TLS 1.0
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ApiRequest.SecurityProtocolTypeEnum.Tls11">
+            <summary>
+            TLS 1.1
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ApiRequest.SecurityProtocolTypeEnum.Tls12">
+            <summary>
+            TLS 1.2
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ApiServiceRequest.#ctor(System.String,System.Boolean,System.Text.Encoding,System.Net.CookieContainer,System.String,System.Object[],System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="serverUrl"></param>
+            <param name="async"></param>
+            <param name="encoder"></param>
+            <param name="cookies"></param>
+            <param name="servicename"></param>
+            <param name="parameters"></param>
+            <param name="hasSetSecurityProtocol"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.HttpClient.InitAuthInfo(System.String,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            初始化认证信息
+            </summary>
+            <param name="acctID">数据中心ID</param>
+            <param name="appID">应用ID</param>
+            <param name="appSec">密钥</param>
+            <param name="userName">用户</param>
+            <param name="lcid">语言ID,1033,2052</param>
+            <param name="orgNum">组织Num,null:表示不指定组织，则取系统默认的组织</param>
+            <param name="serverUrl"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.HttpClient.SetAuth(Kingdee.BOS.WebApi.Client.ApiRequest)">
+            <summary>
+            设置请求验证
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.HttpClient.FillCookieOrHeader(System.Net.HttpWebResponse)">
+            <summary>
+            填充Cookie or hader
+            </summary>
+            <param name="repo"></param>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.JsonArray">
+            <summary>
+            Json对象数组
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.JsonArray.jarray">
+            <summary>
+            The jarray
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonArray.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Kingdee.BOS.WebApi.Client.JsonArray"/> class.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonArray.#ctor">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonArray.Parse(System.String)">
+            <summary>
+            将字符串解析为JsonArray
+            </summary>
+            <param name="json">Json字符串</param>
+            <returns>JsonArray对象</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonArray.ConvertTo``1">
+            <summary>
+            元素类型转换
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonArray.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonArray.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.</returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.JsonArray.ToString">
+            <summary>
+            将JsonArray对象转换为Json字符串
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.LockOneTime">
+            <summary>
+            对Action的执行进行排队，并且只等待一次Action的执行
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApi.#ctor">
+            <summary>
+            构造函数（默认）
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApi.#ctor(System.String)">
+            <summary>
+            构造函数1；默认超时5分钟
+            </summary>
+            <param name="serverUrl"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApi.#ctor(System.String,System.Int32)">
+            <summary>
+             构造函数2
+            </summary>
+            <param name="serverUrl"></param>
+            <param name="timeout">超时时间,单位秒；默认5分钟</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApi.Save``1(System.String,Kingdee.BOS.WebApi.DataEntities.SavaParam{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="formId"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.#ctor">
+            <summary>
+            构造函数（默认）
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.#ctor(System.String)">
+            <summary>
+            构造函数1；默认超时5分钟
+            </summary>
+            <param name="serverUrl"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.#ctor(System.String,System.Int32)">
+            <summary>
+             构造函数2
+            </summary>
+            <param name="serverUrl"></param>
+            <param name="timeout">超时时间,单位秒；默认5分钟</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.GetDataCenters">
+            <summary>
+            获取数据中心列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.ExcuteOperation(System.String,System.String,System.String)">
+            <summary>
+            操作接口
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.Save(System.String,System.String)">
+            <summary>
+            保存
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.BatchSave(System.String,System.String)">
+            <summary>
+            批量保存
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.GetSysReportData(System.String,System.String)">
+            <summary>
+            获取报表数据
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.Audit(System.String,System.String)">
+            <summary>
+            审核
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.WorkflowAudit(System.String)">
+            <summary>
+            工作流审批
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.Delete(System.String,System.String)">
+            <summary>
+            删除
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.UnAudit(System.String,System.String)">
+            <summary>
+            反审核
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.Submit(System.String,System.String)">
+            <summary>
+            提交
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.CancelAssign(System.String,System.String)">
+            <summary>
+            撤销服务接口
+            </summary>
+            <param name="formid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.View(System.String,System.String)">
+            <summary>
+            查看
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.ExecuteBillQuery(System.String)">
+            <summary>
+             查询
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.Draft(System.String,System.String)">
+            <summary>
+             暂存
+            </summary>
+            <param name="formid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.Allocate(System.String,System.String)">
+            <summary>
+            分配
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.CancelAllocate(System.String,System.String)">
+            <summary>
+            取消分配
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.FlexSave(System.String,System.String)">
+            <summary>
+            弹性域保存
+            </summary>
+            <param name="formid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.SendMsg(System.String)">
+            <summary>
+            发送消息
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.Push(System.String,System.String)">
+            <summary>
+            下推
+            </summary>
+            <param name="formid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.GroupSave(System.String,System.String)">
+            <summary>
+            分组保存
+            </summary>
+            <param name="formid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.Disassembly(System.String,System.String)">
+            <summary>
+            拆单接口
+            </summary>
+            <param name="formid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.QueryBusinessInfo(System.String)">
+            <summary>
+            查询单据BussinessInfo接口
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.QueryGroupInfo(System.String)">
+            <summary>
+            查询分组信息接口
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.GroupDelete(System.String)">
+            <summary>
+            分组删除接口
+            </summary>
+            <param name="formid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.SwitchOrg(System.String)">
+            <summary>
+            切换组织接口
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.UploadFile(System.String)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.AttachmentUpload(System.String)">
+            <summary>
+            上传附件
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.AttachmentDownLoad(System.String)">
+            <summary>
+            下载附件
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.GetDataCentersSync(System.Action{System.Collections.Generic.List{Kingdee.BOS.WebApi.Client.DataCenter}},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步获取数据中心列表
+            </summary>
+            <param name="SuccResultHandler">服务器成功处理了请求，返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.ExcuteOperationSync(System.String,System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步操作接口
+            </summary>
+            <param name="formid"></param>
+            <param name="opNumber"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.SaveSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步保存接口
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.BatchSaveSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步批量保存接口
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.AuditSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步审核
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.CancelAssignSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步撤销
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.WorkflowAuditSync(System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步工作流审批
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.DeleteSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步删除
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.UnAuditSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步反审核
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.SubmitSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步提交
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.ViewSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步查看
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.ExecuteBillQuerySync(System.String,System.Action{System.Collections.Generic.List{System.Collections.Generic.List{System.Object}}},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步查询
+            </summary>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.DraftSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步暂存
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.AllocateSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步分配
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.FlexSaveSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步弹性域保存
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.SendMsgSync(System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步发送消息
+            </summary>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.PushSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步下推
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.GroupSaveSync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步分组保存
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler">服务器成功处理了请求，既返回200的状态码，回调</param>
+            <param name="progressCallback"></param>
+            <param name="failcallback">返回非200的状态码，回调</param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.DisassemblySync(System.String,System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步拆单接口
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="SuccResultHandler"></param>
+            <param name="failcallback"></param>
+            <param name="progressCallback"></param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.QueryBusinessInfoSync(System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步查询单据BussinessInfo接口
+            </summary>
+            <param name="data"></param>
+            <param name="SuccResultHandler"></param>
+            <param name="failcallback"></param>
+            <param name="progressCallback"></param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.QueryGroupInfoSync(System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步查询分组信息接口
+            </summary>
+            <param name="data"></param>
+            <param name="SuccResultHandler"></param>
+            <param name="failcallback"></param>
+            <param name="progressCallback"></param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.K3CloudApiClient.GroupDeleteSync(System.String,System.Action{System.String},Kingdee.BOS.WebApi.Client.FailCallbackHandler,Kingdee.BOS.WebApi.Client.ProgressChangedHandler,System.Int32)">
+            <summary>
+            异步删除分组接口
+            </summary>
+            <param name="data"></param>
+            <param name="SuccResultHandler"></param>
+            <param name="failcallback"></param>
+            <param name="progressCallback"></param>
+            <param name="reportInterval"></param>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.ProgressInfo">
+            <summary>
+            进度信息
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ProgressInfo.Percentage">
+            <summary>
+            百分比：0-100
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ProgressInfo.Message">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.ServiceException">
+            <summary>
+            服务调用异常
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ServiceException.apiClientErrorCode">
+            <summary>
+            客户端或通讯异常编号
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ServiceException.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ServiceException.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="code">异常编码</param>
+            <param name="message">异常提示信息</param>
+            <param name="ex">内部异常</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ServiceException.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="message">异常提示信息</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ServiceException.#ctor(System.Int32,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="code">异常编码</param>
+            <param name="message">异常提示信息</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ServiceException.#ctor(System.Exception)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ex">内部异常</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ServiceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Kingdee.BOS.WebApi.Client.ServiceException"/> class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that holds the contextual information about the source or destination.</param>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ServiceException.errorCode">
+            <summary>
+            The error code
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ServiceException.message">
+            <summary>
+            The message
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ServiceException.stackTrace">
+            <summary>
+            The stack trace
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ServiceException.data">
+            <summary>
+            The data
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ServiceException._httpCode">
+            <summary>
+            The _HTTP code
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ServiceException.GetHttpCode">
+            <summary>
+            Http状态码
+            </summary>
+            <returns>A non-zero HTTP code representing the exception or the <see cref="P:System.Exception.InnerException" /> code; otherwise, HTTP response status code 500.</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.ServiceException.GetLastInnerEx">
+            <summary>
+            获取服务端最后一个异常信息
+            </summary>
+            <returns>ExceptionWrapper.</returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.ClassName">
+            <summary>
+            类名
+            </summary>
+            <value>The name of the class.</value>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.ExceptionMethod">
+            <summary>
+            异常产生的方法
+            </summary>
+            <value>The exception method.</value>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.ErrorCode">
+            <summary>
+            异常信息，-1为WepApi客户端异常或通讯异常
+            </summary>
+            <value>The error code.</value>
+            <returns>The HRESULT of the error.</returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.HelpLink">
+            <summary>
+            帮助链接
+            </summary>
+            <value>The help link.</value>
+            <returns>The Uniform Resource Name (URN) or Uniform Resource Locator (URL).</returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.Message">
+            <summary>
+            x提示信息
+            </summary>
+            <value>The message.</value>
+            <returns>The error message that explains the reason for the exception, or an empty string("").</returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.Source">
+            <summary>
+            产生异常的对象或应用名
+            </summary>
+            <value>The source.</value>
+            <returns>The name of the application or the object that causes the error.</returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.StackTrace">
+            <summary>
+            异常堆栈
+            </summary>
+            <value>The stack trace.</value>
+            <returns>A string that describes the immediate frames of the call stack.</returns>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+            </PermissionSet>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.Data">
+            <summary>
+            数据
+            </summary>
+            <value>The data.</value>
+            <returns>An object that implements the <see cref="T:System.Collections.IDictionary" /> interface and contains a collection of user-defined key/value pairs. The default is an empty collection.</returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.Handled">
+            <summary>
+            异常是否处理，如果不希望异常再次抛出，需要在处理程序中将该值设置为True
+            </summary>
+            <value><c>true</c> if handled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.Client.ServiceException.InnerExWrapper">
+            <summary>
+            服务端执行时内部异常
+            </summary>
+            <value>The inner ex wrapper.</value>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.DelayInvoker`1">
+            <summary>
+            延时调用器
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.DelayInvoker`1.#ctor(System.Action{`0},`0,System.Int32)">
+            <summary>
+            构造
+            </summary>
+            <param name="action">延时调用函数</param>
+            <param name="state">状态</param>
+            <param name="timeout">延时时间，单位：秒</param>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ConstDefine.X_KD_AppKey">
+            <summary>
+            应用ID
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ConstDefine.X_KD_AppData">
+            <summary>
+            应用数据包
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ConstDefine.X_KD_Signature">
+            <summary>
+            数据包签名
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.ConstDefine.KDSERVICE_SESSIONID">
+            <summary>
+            K/3 Cloud 会话Key
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.Utils.EnDecode.HmacSHA256(System.String,System.String,System.Text.Encoding,System.Boolean)">
+            <summary>
+            HMACSHA256加密
+            </summary>
+            <param name="message"></param>
+            <param name="secret"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.Utils.EnDecode.EncryptAppSecret(System.String)">
+            <summary>
+            加密AppSecret（第三方系统登录授权）
+            </summary>
+            <param name="appSecret"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.Utils.EnDecode.DecryptAppSecret(System.String)">
+            <summary>
+            解密AppSecret（第三方系统登录授权）
+            </summary>
+            <param name="appSecret"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.Utils.EnDecode.XOREncode(System.Byte[])">
+            <summary>
+            异或编码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.Utils.EnDecode.ROT13Encode(System.String)">
+            <summary>
+            ROT13编码
+            </summary>
+            <param name="InputText"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.WebRequestHelper">
+            <summary>
+            All web requdst must create by Create
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.WebRequestHelper.Create(System.String)">
+            <summary>
+            Create HttpWebRequest
+            </summary>
+            <param name="uri">
+            e.g: http://localhost/K3Cloud
+            or https://localhost/K3Cloud
+            or http://localhost:8090/K3Cloud
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.WebRequestHelper.Create(System.Uri)">
+            <summary>
+            Create HttpWebRequest
+            </summary>
+            <param name="uri">
+            e.g: http://localhost/K3Cloud
+            or https://localhost/K3Cloud
+            or http://localhost:8090/K3Cloud
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.WebRequestHelper.GetCerFile">
+            <summary>
+            交互环境:取当前目录或父组目录
+            非交互环境:当前目录或App_Data目录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.WebRequestHelper.TryToGetCerFile(System.String)">
+            <summary>
+            优先： 机器名相同的证书
+            其次： 通用证书 K3CloudCert.cer
+            </summary>
+            <param name="dirName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.Client.WebRequestHelper.PortIsOpen(System.String,System.Int32)">
+            <summary>
+            检查端口是否开启
+            
+            </summary>
+            <param name="hostName"></param>
+            <param name="port"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.Client.WebRequestHelper.SecurityProtocolTypeEnum">
+            <summary>
+            Custom SecurityProtocolType
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.WebRequestHelper.SecurityProtocolTypeEnum.Ssl3">
+            <summary>
+            SSL3
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.WebRequestHelper.SecurityProtocolTypeEnum.Tls">
+            <summary>
+            TLS 1.0
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.WebRequestHelper.SecurityProtocolTypeEnum.Tls11">
+            <summary>
+            TLS 1.1
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.Client.WebRequestHelper.SecurityProtocolTypeEnum.Tls12">
+            <summary>
+            TLS 1.2
+            </summary>
+        </member>
+    </members>
+</doc>

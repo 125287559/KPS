@@ -1,0 +1,2120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kingdee.BOS.App</name>
+    </assembly>
+    <members>
+        <member name="T:Kingdee.BOS.App.SqlConSumConterInfo">
+            <summary>
+            SQL耗时收集
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.App.SqlConSumConterInfo._sqlComsumMilliseconds">
+            <summary>
+            收集的阀值
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.App.SqlConSumConterInfo._bNeedCollect">
+            <summary>
+            是否需要收集(登录第一次默认收集)
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.App.SqlConSumConterInfo._bHasCheck">
+            <summary>
+            是否需要检查（登录之后只检查一次）
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.SqlConSumConterInfo.#ctor">
+            <summary>
+            构造时 创建Stopwatch并且start
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.SqlConSumConterInfo.GetInstance(Kingdee.BOS.Context)">
+            <summary>
+            根据是否需要收集状态决定是否返回收集对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.SqlConSumConterInfo.GetNeedCollect(Kingdee.BOS.Context)">
+            <summary>
+            获取收集的状态
+            </summary>
+            <param name="ctx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.SqlConSumConterInfo.EndCount(System.String,Kingdee.BOS.Context)">
+            <summary>
+            结束计数，并收集
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.App.Counter.UECounter">
+            <summary>
+            用户体验计数器
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Counter.UECounter.#ctor(Kingdee.BOS.Context)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ctx"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Counter.UECounter.Persistence(System.Collections.Generic.List{Kingdee.BOS.Log.CounterInfo})">
+            <summary>
+            持久化
+            </summary>
+            <param name="counterInfos"></param>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.IDatabase">
+            <summary>
+            数据访问接口
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.CreateCommandByCommandType(System.Data.CommandType,System.String,System.Int32)">
+             <summary>
+            根据CommandType，创建Command
+             </summary>
+             <param name="cmdtype"></param>
+             <param name="strSQL"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.CreateCommandByCommandType(System.Data.CommandType,System.String,System.Boolean,System.Int32)">
+            <summary>
+            根据CommandType，创建Command
+            </summary>
+            <param name="commandType"></param>
+            <param name="strSQL"></param>
+            <param name="needTranslate">是否需要事务</param>
+            <param name="commandTimeout">执行超时时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteReader(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回DataRead数据集
+            </summary>
+            <param name="cmd"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteReader(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Data.CommandBehavior)">
+            <summary>
+            
+            </summary>
+            <param name="cmd"></param>
+            <param name="paramList"></param>
+            <param name="cmdBehavior"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteDataSet(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回dataSet数据集
+            </summary>
+            <param name="cmd"></param>
+            <param name="listParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteDataSet(System.Data.Common.DbCommand,System.Data.DataSet,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回dataSet数据集
+            </summary>
+            <param name="command"></param>
+            <param name="dataSet"></param>
+            <param name="tableName"></param>
+            <param name="listParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteDataSet(System.Collections.Generic.List{System.String},System.String[])">
+            <summary>
+            多个查询SQL,批量填充到dataset
+            </summary>
+            <param name="sqlArray"></param>
+            <param name="tableNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.BulkInserts(System.Data.Common.DbCommand,System.Data.DataTable)">
+            <summary>
+            批量插入
+            </summary>
+            <param name="cmd"></param>
+            <param name="dt"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteNonQuery(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            执行SQL
+            </summary>
+            <param name="cmd"></param>
+            <param name="listParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteNonQueryWithNewCn(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Boolean)">
+            <summary>
+            创建一个新连接，执行SQL语句
+            处理在sessionscope下，需要执行DDL语句导致事务提交的问题
+            </summary>
+            <param name="command"></param>
+            <param name="listParam"></param>
+            <param name="bNewCn">是否需要创建一个新连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteStoreProcedure(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="cmd"></param>
+            <param name="outLstParam"></param>
+            <param name="lstParam"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteMerge(Kingdee.BOS.MergeStatement)">
+            <summary>
+            执行merge
+            </summary>
+            <param name="ctx"></param>
+            <param name="merge"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteMerge(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            执行merge
+            </summary>
+            <param name="ctx"></param>
+            <param name="merge"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteBatch(System.Collections.Generic.List{System.String},System.Int32,System.Int32)">
+            <summary>
+            执行批量脚本
+            </summary>
+            <param name="sqlArray"></param>
+            <param name="batchSize"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteBatchParallel(System.Collections.Generic.List{System.String},System.Int32,System.Int32)">
+            <summary>
+            批量并行执行
+            </summary>
+            <param name="sqlArray"></param>
+            <param name="batchSize"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.BatchSelect(Kingdee.BOS.BatchSqlParam,System.String,System.String)">
+            <summary>
+            批量条件查询，用于条件数组查询
+            注：只用于条件相对较少的查询
+               传入datatable的数据量将在Oracle下打开同样数量的游标，这将导致游标不够的问题
+               2017-07-12对此方法进行改造，将按每批50的方式进行数据拆分，来避免传入数据量过多导致游标不够的问题
+               但在数据量过大的情况下，由于多次执行，这种方法性能可能将会下降，调用此方式时请注意是否合适
+            </summary>
+            <param name="param">BatchSqlParam.data中的数据如果超过50，不建议使用此方法</param>
+            <param name="selectFields"></param>
+            <param name="where"></param>
+            <returns></returns>		
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.BatchUpdate(Kingdee.BOS.BatchSqlParam,System.String)">
+            <summary>
+            批量更新数据
+            </summary>
+            <param name="tableName"></param>
+            <param name="param"></param>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.BatchDelete(Kingdee.BOS.BatchSqlParam,System.String)">
+            <summary>
+            批量删除数据
+            </summary>
+            <param name="ctx"></param>
+            <param name="param"></param>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteReaderWithNewCn(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            不管当前上下文环境，采用新Connection获取数据
+            </summary>
+            <param name="cmd"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.ExecuteReaderWithNewCn(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Data.CommandBehavior)">
+            <summary>
+            不管当前上下文环境，采用新Connection获取数据
+            </summary>
+            <param name="cmd"></param>
+            <param name="paramList"></param>
+            <param name="cmdBehavior"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.CreateSessionTempTable(System.String,System.String)">
+            <summary>
+            创建临时表（sqlserver没有事务问题，oracle会提交事务
+            </summary>
+            <param name="createSql">Create Table T（）语句中的"（）"部分，如创建Create Table T1（fid int)，那么传入参数为(fid int)</param>
+            <returns>table name</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.BulkCopy(System.Data.Common.DbCommand,System.Data.DataTable,System.Boolean)">
+             <summary>
+            提供给Oracle的批量数据插入的方法，解决BulkInserts在基于sun solaris操作系统出现的sql*net more data from client
+             SQL Server下默认调用原有的BulkInserts方法 
+             </summary>
+             <param name="cmd"></param>
+             <param name="dt"></param>
+             <param name="UseTransaction"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.IDatabase.BulkCopyNoTransaction(System.Data.Common.DbCommand,System.Data.DataTable)">
+            <summary>
+            明确不用开启新事务，使用这个方法
+            </summary>
+            <remarks>由于历史原因，不便修改BulkCopy</remarks>
+            <param name="cmd"></param>
+            <param name="dt"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.GetParameter(System.Data.Common.DbConnection,System.String,Kingdee.BOS.KDDbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Configures a given <see cref="T:System.Data.Common.DbParameter"/>.
+            </summary>
+            <param name="param">The <see cref="T:System.Data.Common.DbParameter"/> to configure.</param>
+            <param name="name"><para>The name of the parameter.</para></param>
+            <param name="dbType"><para>One of the <see cref="P:Kingdee.BOS.App.Data.AbstractDatabase.DbType"/> values.</para></param>
+            <param name="size"><para>The maximum size of the data within the column.</para></param>
+            <param name="direction"><para>One of the <see cref="T:System.Data.ParameterDirection"/> values.</para></param>
+            <param name="nullable"><para>Avalue indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
+            <param name="precision"><para>The maximum number of digits used to represent the <paramref name="value"/>.</para></param>
+            <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
+            <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
+            <param name="sourceVersion"><para>One of the <see cref="T:System.Data.DataRowVersion"/> values.</para></param>
+            <param name="value"><para>The value of the parameter.</para></param>  
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.GetParameter(System.Data.Common.DbConnection,System.String,System.Data.DbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object,System.String)">
+            <summary>
+            即将废弃 <see cref="T:System.Data.Common.DbParameter"/>.
+            </summary>
+            <param name="param">The <see cref="T:System.Data.Common.DbParameter"/> to configure.</param>
+            <param name="name"><para>The name of the parameter.</para></param>
+            <param name="dbType"><para>One of the <see cref="P:Kingdee.BOS.App.Data.AbstractDatabase.DbType"/> values.</para></param>
+            <param name="size"><para>The maximum size of the data within the column.</para></param>
+            <param name="direction"><para>One of the <see cref="T:System.Data.ParameterDirection"/> values.</para></param>
+            <param name="nullable"><para>Avalue indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
+            <param name="precision"><para>The maximum number of digits used to represent the <paramref name="value"/>.</para></param>
+            <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
+            <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
+            <param name="sourceVersion"><para>One of the <see cref="T:System.Data.DataRowVersion"/> values.</para></param>
+            <param name="value"><para>The value of the parameter.</para></param>  
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ExecuteDataSet(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回dataSet数据集
+            </summary>
+            <param name="command"></param>
+            <param name="listParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ExecuteDataSet(System.Collections.Generic.List{System.String},System.String[])">
+            <summary>
+            多个查询SQL,批量填充到dataset
+            </summary>
+            <param name="sqlArray"></param>
+            <param name="tableNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ExecuteDataSet(System.Data.Common.DbCommand,System.Data.DataSet,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回dataSet数据集
+            </summary>
+            <param name="command"></param>
+            <param name="dataSet"></param>
+            <param name="tableName"></param>
+            <param name="listParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.GetOpenConnection">
+            <summary>
+            	Get's a "wrapped" connection that will be not be disposed if a transaction is
+            	active (created by creating a <see cref="T:System.Transactions.TransactionScope"/> instance). The
+            	connection will be disposed when no transaction is active.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.LoadDataSet(System.Data.Common.DbCommand,System.Data.DataSet,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            <para>Executes the <paramref name="command"/> and adds a new <see cref="T:System.Data.DataTable"></see> to the existing <see cref="T:System.Data.DataSet"></see>.</para>
+            </summary>
+            <param name="command">
+            <para>The <see cref="T:System.Data.Common.DbCommand"/> to execute.</para>
+            </param>
+            <param name="dataSet">
+            <para>The <see cref="T:System.Data.DataSet"/> to load.</para>
+            </param>
+            <param name="tableName">
+            <para>The name for the new <see cref="T:System.Data.DataTable"/> to add to the <see cref="T:System.Data.DataSet"/>.</para>
+            </param>        
+            <exception cref="T:System.ArgumentNullException">Any input parameter was <see langword="null"/> (<b>Nothing</b> in Visual Basic)</exception>
+            <exception cref="T:System.ArgumentException">tableName was an empty string</exception>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.LoadDataSet(System.Data.Common.DbCommand,System.Data.DataSet,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            <para>Executes the <paramref name="command"/> within the given <paramref name="transaction"/> and adds a new <see cref="T:System.Data.DataTable"></see> to the existing <see cref="T:System.Data.DataSet"></see>.</para>
+            </summary>
+            <param name="command">
+            <para>The <see cref="T:System.Data.Common.DbCommand"/> to execute.</para>
+            </param>
+            <param name="dataSet">
+            <para>The <see cref="T:System.Data.DataSet"/> to load.</para>
+            </param>
+            <param name="tableName">
+            <para>The name for the new <see cref="T:System.Data.DataTable"/> to add to the <see cref="T:System.Data.DataSet"/>.</para>
+            </param>
+            <param name="transaction">
+            <para>The <see cref="T:System.Data.IDbTransaction"/> to execute the command within.</para>
+            </param>        
+            <exception cref="T:System.ArgumentNullException">Any input parameter was <see langword="null"/> (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentException">tableName was an empty string.</exception>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.LoadDataSet(System.Data.Common.DbCommand,System.Data.DataSet,System.String[],System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            <para>Loads a <see cref="T:System.Data.DataSet"/> from a <see cref="T:System.Data.Common.DbCommand"/>.</para>
+            </summary>
+            <param name="command">
+            <para>The command to execute to fill the <see cref="T:System.Data.DataSet"/>.</para>
+            </param>
+            <param name="dataSet">
+            <para>The <see cref="T:System.Data.DataSet"/> to fill.</para>
+            </param>
+            <param name="tableNames">
+            <para>An array of table name mappings for the <see cref="T:System.Data.DataSet"/>.</para>
+            </param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.LoadDataSet(System.Data.Common.DbCommand,System.Data.DataSet,System.String[],System.Data.Common.DbTransaction)">
+            <summary>
+            <para>Loads a <see cref="T:System.Data.DataSet"/> from a <see cref="T:System.Data.Common.DbCommand"/> in  a transaction.</para>
+            </summary>
+            <param name="command">
+            <para>The command to execute to fill the <see cref="T:System.Data.DataSet"/>.</para>
+            </param>
+            <param name="dataSet">
+            <para>The <see cref="T:System.Data.DataSet"/> to fill.</para>
+            </param>
+            <param name="tableNames">
+            <para>An array of table name mappings for the <see cref="T:System.Data.DataSet"/>.</para>
+            </param>
+            <param name="transaction">
+            <para>The <see cref="T:System.Data.IDbTransaction"/> to execute the command in.</para>
+            </param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.GetDataAdapter">
+            <summary>
+            Gets the DbDataAdapter with the given update behavior and connection from the proper derived class.
+            </summary>
+            <param name="updateBehavior">
+            <para>One of the <see cref="!:UpdateBehavior"/> values.</para>
+            </param>        
+            <returns>A <see cref="T:System.Data.Common.DbDataAdapter"/>.</returns>
+            <seealso cref="T:System.Data.Common.DbDataAdapter"/>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.PrepareCommand(System.Data.Common.DbCommand,System.Data.Common.DbTransaction)">
+            <summary>
+            <para>Assigns a <paramref name="transaction"/> to the <paramref name="command"/> and discovers parameters if needed.</para>
+            </summary>
+            <param name="command"><para>The command that contains the query to prepare.</para></param>
+            <param name="transaction">The transaction to assign to the command.</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.LoadDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            <para>Loads a <see cref="T:System.Data.DataSet"/> from command text.</para>
+            </summary>
+            <param name="commandType">
+            <para>One of the <see cref="T:System.Data.CommandType"/> values.</para>
+            </param>
+            <param name="commandText">
+            <para>The command text to execute.</para>
+            </param>
+            <param name="dataSet">
+            <para>The <see cref="T:System.Data.DataSet"/> to fill.</para>
+            </param>
+            <param name="tableNames">
+            <para>An array of table name mappings for the <see cref="T:System.Data.DataSet"/>.</para>
+            </param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.LoadDataSet(System.Data.Common.DbTransaction,System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            <para>Loads a <see cref="T:System.Data.DataSet"/> from command text in a transaction.</para>
+            </summary>
+            <param name="transaction">
+            <para>The <see cref="T:System.Data.IDbTransaction"/> to execute the command in.</para>
+            </param>
+            <param name="commandType">
+            <para>One of the <see cref="T:System.Data.CommandType"/> values.</para>
+            </param>
+            <param name="commandText">
+            <para>The command text to execute.</para>
+            </param>
+            <param name="dataSet">
+            <para>The <see cref="T:System.Data.DataSet"/> to fill.</para>
+            </param>
+            <param name="tableNames">
+            <para>An array of table name mappings for the <see cref="T:System.Data.DataSet"/>.</para>
+            </param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ExecuteScalar(System.Data.Common.DbCommand,Kingdee.BOS.SqlParam[])">
+            <summary>
+            
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.BatchUpdate(Kingdee.BOS.BatchSqlParam,System.String)">
+            <summary>
+            批量更新数据，只支持单表修改，表达式按and逻辑构造
+            </summary>
+            <param name="param"></param>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.BatchDelete(Kingdee.BOS.BatchSqlParam,System.String)">
+            <summary>
+            批量删除数据
+            </summary>
+            <param name="ctx"></param>
+            <param name="param"></param>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ExecuteNonQueryByArray(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            执行数组参数的SQL，Param必须使用KDDbType类型构造，参数值必须是数组
+            </summary>
+            <param name="command"></param>
+            <param name="listParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ConvertTableFun(System.Data.Common.DbCommand)">
+            <summary>
+            将表值函数进行转换
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ExecuteReaderWithNewCn(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            创建一个新连接，执行SQL语句
+            </summary>
+            <param name="cmd"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ExecuteReaderWithNewCn(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Data.CommandBehavior)">
+            <summary>
+            创建一个新连接，执行SQL语句
+            </summary>
+            <param name="cmd"></param>
+            <param name="paramList"></param>
+            <param name="cmdBehavior"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.CreateSessionTempTable(System.String,System.String)">
+            <summary>
+            创建临时表（sqlserver没有事务问题，oracle有事务
+            </summary>
+            <param name="createSql">Create Table T（）语句中的"（）"部分，如创建Create Table T1（fid int)，那么传入参数为(fid int)</param>
+            <returns>table name</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ExecuteNonQueryWithNewCn(System.Data.Common.DbCommand,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Boolean)">
+            <summary>
+            创建一个新连接，执行SQL语句
+            处理在sessionscope下，需要执行DDL语句导致事务提交的问题
+            </summary>
+            <param name="command"></param>
+            <param name="listParam"></param>
+            <param name="bNewCn">是否需要创建一个新连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.ReleaseParam(System.Data.IDbCommand)">
+            <summary>
+            释放Oracle非托管代码中的参数对象
+            </summary>
+            <param name="cmd"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.BulkCopy(System.Data.Common.DbCommand,System.Data.DataTable,System.Boolean)">
+             <summary>
+            提供给Oracle的批量数据插入的方法，解决BulkInserts在基于sun solaris操作系统出现的sql*net more data from client
+             SQL Server下默认调用原有的BulkInserts方法 
+             </summary>
+             <param name="cmd"></param>
+             <param name="dt"></param>
+             <param name="UseTransaction"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.AbstractDatabase.BulkCopyNoTransaction(System.Data.Common.DbCommand,System.Data.DataTable)">
+            <summary>
+            明确不用开启新事务，使用这个方法
+            </summary>
+            <remarks>由于历史原因，不便修改BulkCopy</remarks>
+            <param name="cmd"></param>
+            <param name="dt"></param>
+        </member>
+        <member name="P:Kingdee.BOS.App.Data.AbstractDatabase.curContext">
+            <summary>
+            袁正伟
+            2015-09-09 新增
+            数据中心标识
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.BatchUpdateObject">
+            <summary>
+            批量更新对象，包括：表数据Datatable、更新语句CommandText
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.ProclaimText.DoProclaimText(System.String)">
+            <summary>
+            对字符串进行解密
+            </summary>
+            <param name="proclaimText"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.ConnectionWrapper">
+            <summary>
+            	This is a helper class that is used to manage the lifetime of a connection for various
+            	Execute methods. We needed this class to support implicit transactions created with
+            	the <see cref="!:TransactionScope"/> class. In this case, the various Execute methods
+            	need to use a shared connection instead of a new connection for each request in order
+            	to prevent a distributed transaction.
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.ConnectionWrapper.#ctor(System.Data.Common.DbConnection,System.Boolean)">
+            <summary>
+            	Create a new "lifetime" container for a <see cref="T:System.Data.Common.DbConnection"/> instance.
+            </summary>
+            <param name="connection">The connection</param>
+            <param name="disposeConnection">
+            	Whether or not to dispose of the connection when this class is disposed.
+            </param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.ConnectionWrapper.Dispose">
+            <summary>
+            	Dispose the wrapped connection, if appropriate.
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.App.Data.ConnectionWrapper.Connection">
+            <summary>
+            	Gets the actual connection.
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.DataReaderEnumerable`1">
+            <summary>
+            将IDataReader对象的值进行读取，使之支持枚举功能
+            </summary>
+            <typeparam name="T">要读取的数据类型</typeparam>
+            <remarks>
+            注意在枚举完毕后本类会自动关闭读取器
+            </remarks>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DataReaderEnumerable`1.#ctor(System.Func{System.Data.IDataReader},System.Func{System.Data.IDataRecord,`0})">
+            <summary>
+            构建新的实例
+            </summary>
+            <param name="getReaderFunc">通过此函数获取一个读取器对象</param>
+            <param name="getValueFunc">一个委托当读取到某行时，从此行中获取想要的值。</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DataReaderEnumerable`1.GetEnumerator">
+            <summary>
+            获取枚举器，此枚举器将获取每行你想要的值
+            </summary>
+            <returns>枚举器对象</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DataReaderEnumerable`1.OnStarting(System.Data.IDataReader)">
+            <summary>
+            即将开始枚举操作时的调用，允许派生类提前准备索引这样的事情。
+            </summary>
+            <param name="dataReader">读取器</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DataReaderEnumerable`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            获取枚举器，此枚举器将获取每行你想要的值
+            </summary>
+            <returns>枚举器对象</returns>
+        </member>
+        <member name="P:Kingdee.BOS.App.Data.DataReaderEnumerable`1.IgnoreNull">
+            <summary>
+            返回/设置是否忽略Null的值，默认为false
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.DataReaderEnumerable">
+            <summary>
+            非泛型版本的枚举器，将第一个字段的值输出
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DataReaderEnumerable.#ctor(System.Func{System.Data.IDataReader})">
+            <summary>
+            创建实例，并设置IgnoreDbNull = true
+            </summary>
+            <param name="getReaderFunc">通过此函数获取一个读取器对象</param>
+            <param name="fieldName">要输出的字段，如果未设置将默认输出第一列</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBExtendUtils.Execute(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam)">
+            <summary>
+            执行SQL语句，针对部分参数加密时调用 
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBExtendUtils.Execute(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            执行SQL语句，针对部分参数加密时调用 
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSql"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBExtendUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Collections.Generic.IEnumerable{Kingdee.BOS.EncryptFieldInfo})">
+            <summary>
+            流方式读SQL查询结果，针对部分字段需要获取原字段信息
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <param name="encryptInfos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBExtendUtils.ExecuteDynamicObject(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.EncryptFieldInfo},Kingdee.BOS.Orm.Metadata.DataEntity.IDataEntityType,System.Collections.Generic.IDictionary{System.String,System.Type},System.Data.CommandType,Kingdee.BOS.SqlParam[])">
+            <summary>
+            执行指定的SQL并返回默认的一批使用DynamicObject集合描述的数据
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="encryptInfos"></param>
+            <param name="dt"></param>
+            <param name="propertyTypeMaps"></param>
+            <param name="cmdType"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBExtendUtils.ExecuteBatch(Kingdee.BOS.Context,System.Collections.Generic.List{Kingdee.BOS.App.Data.SqlObject})">
+            <summary>
+            批量执行SQL语句
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="lstSqlObj">需要执行SQL语句的对象集合</param>
+            <returns>最后一条语句影响的行数</returns>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.DBMigrationUtil">
+            <summary>
+            数据库迁移使用
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBMigrationUtil.BulkInsertsSupportBinary(Kingdee.BOS.Context,System.Data.DataTable)">
+            <summary>
+            提供支持image的bulkinsert
+            </summary>
+            <param name="ctx"></param>
+            <param name="dt"></param>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.DBUtils">
+            <summary>
+            数据访问工具类，提供各种数据访问方法。
+            </summary>
+            <remarks>  
+            单个查询语句建议使用ExecuteReader方法，更新和删除语句以及DDL语句用Execute方法。
+            业务对象数据获取建议使用ExecuteDynamicObject方法，该方法直接返回DynamicObject对象直接使用，无需做字段类型转换以及空值判断。
+            批量执行语句建议使用ExecuteBatch方法，方法的参数支持参数化SQL。该方法在SQL语句较多时有较好的性能。
+            执行某个SQL并获取第一行第一列的值使用ExecuteScalar方法，该方法允许调用前设置默认值，当查询返回为空的时候以默认值替代返回的空值。
+            </remarks>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteStoreProcedure(Kingdee.BOS.Context,System.String,System.Collections.Generic.List{Kingdee.BOS.SqlParam})">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strProcedureName">存储过程名</param>
+            <param name="lstSqlParam">入参</param>
+            <returns>出参</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String)">
+            <summary>
+            流方式读SQL查询结果。
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">SQL语句</param>
+            <returns>返回DataReader</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Boolean)">
+            <summary>
+            流方式读SQL查询结果。
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">SQL语句</param>
+            <param name="bNewCn">是否开启一个新的连接</param>
+            <returns>返回DataReader</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Data.CommandType)">
+            <summary>
+            返回DataReader，指定命令类型
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">SQL语句，如果为存储过程那么对应为存储过程名称</param>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Data.CommandType,System.Boolean)">
+            <summary>
+            返回DataReader，指定命令类型
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">SQL语句，如果为存储过程那么对应为存储过程名称</param>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <param name="bNewCn">是否开启一个新的连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam)">
+            <summary>
+            返回DataReader，一个参数
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="param">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam,System.Boolean)">
+            <summary>
+            返回DataReader，一个参数
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="param">参数</param>
+            <param name="bNewCn">是否开启一个新的连接</param>        
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam,System.Data.CommandType)">
+            <summary>
+            返回DataReader，一个参数
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="param">参数</param>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam,System.Data.CommandType,System.Boolean)">
+            <summary>
+            返回DataReader，一个参数
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="param">参数</param>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <param name="bNewCn">是否开启一个新的连接</param>     
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Collections.Generic.List{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回DataReader，多个参数
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="paramList">参数对象列表</param> <seealso cref="T:Kingdee.BOS.SqlParam"/>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Collections.Generic.List{Kingdee.BOS.SqlParam},System.Boolean)">
+            <summary>
+            返回DataReader，多个参数
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="paramList">参数对象列表</param> <seealso cref="T:Kingdee.BOS.SqlParam"/>
+            <param name="bNewCn">是否开启一个新的连接</param>     
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Data.CommandType)">
+            <summary>
+            返回DataReader，多个参数
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="paramList">参数对象列表</param><seealso cref="T:Kingdee.BOS.SqlParam"/>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Data.CommandType,System.Boolean)">
+            <summary>
+            返回DataReader，多个参数
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="paramList">参数对象列表</param><seealso cref="T:Kingdee.BOS.SqlParam"/>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <param name="bNewCn">是否开启一个新的连接</param>   
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Data.CommandType,System.Data.CommandBehavior)">
+            <summary>
+            返回DataReader，多个参数
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <param name="cmdtype"></param>
+            <param name="cmdBehavior"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Data.CommandType,System.Data.CommandBehavior,System.Boolean)">
+            <summary>
+            返回DataReader，多个参数
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <param name="cmdtype"></param>
+            <param name="cmdBehavior"></param>
+            <param name="bNewCn">是否开启一个新的连接</param>   
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">SQL语句</param>
+            <returns>返回DataReader</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,System.Boolean)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">SQL语句</param>
+            <param name="bNewCn">是否开启一个新的连接</param>
+            <returns>返回DataReader</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,System.Data.CommandType)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">SQL语句，如果为存储过程那么对应为存储过程名称</param>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,System.Data.CommandType,System.Boolean)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">SQL语句，如果为存储过程那么对应为存储过程名称</param>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <param name="bNewCn">是否开启一个新的连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="param">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam,System.Boolean)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="param">参数</param>
+            <param name="bNewCn">是否开启一个新的连接</param>        
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam,System.Data.CommandType)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="param">参数</param>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam,System.Data.CommandType,System.Boolean)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="param">参数</param>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <param name="bNewCn">是否开启一个新的连接</param>     
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,System.Collections.Generic.List{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="paramList">参数对象列表</param> <seealso cref="T:Kingdee.BOS.SqlParam"/>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,System.Collections.Generic.List{Kingdee.BOS.SqlParam},System.Boolean)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="paramList">参数对象列表</param> <seealso cref="T:Kingdee.BOS.SqlParam"/>
+            <param name="bNewCn">是否开启一个新的连接</param>     
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Data.CommandType)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">参数化SQL语句</param>
+            <param name="paramList">参数对象列表</param><seealso cref="T:Kingdee.BOS.SqlParam"/>
+            <param name="cmdtype">命令类型：Text||StoredProcedure</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReaderWithoutPk(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Data.CommandType,System.Boolean)">
+            <summary>
+            返回DataReader，不自动读取主键
+            ExecuteReader默认设置CommandBehavior.KeyInfo会自动读取主键，如果SQL语句有也有主键，会报列明重复的异常
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <param name="cmdtype"></param>
+            <param name="bNewCn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteDataSet(Kingdee.BOS.Context,System.Collections.Generic.List{System.String},System.String[])">
+            <summary>
+            多个查询SQL,批量填充到dataset
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="tableNames"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteDataSet(Kingdee.BOS.Context,System.String,System.Data.DataSet,System.String,System.Collections.Generic.List{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回dataSet数据集
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="ds"></param>
+            <param name="tableName"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteDataSet(Kingdee.BOS.Context,System.Data.CommandType,System.String,System.Collections.Generic.List{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回dataSet数据集
+            </summary>
+            <param name="ctx"></param>
+            <param name="commandType"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteObjectsById(Kingdee.BOS.Context,System.String,Kingdee.BOS.Orm.Metadata.DataEntity.IDataEntityType)">
+            <summary>
+            执行一个SQL，并将输出的编号对应的实体读取出
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="selectIdSql">仅输出主键字段值的查询SQL,例如 Select Fid From customers Where Arg > 20</param>
+            <param name="dt">要输出的对象类型</param>
+            <returns>一批实体对象</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteEnumerable(Kingdee.BOS.Context,System.String,System.Data.CommandType,Kingdee.BOS.SqlParam[])">
+            <summary>
+            执行SQL语句并返回一个枚举器对象
+            </summary>
+            <param name="ctx">上下文对象</param>
+            <param name="strSQL">要执行的SQL语句</param>
+            <param name="cmdType">语句类型</param>
+            <param name="paramList">参数列表</param>
+            <returns>返回一个枚举器，此枚举器在枚举完毕或失败后会自动关闭连接</returns>
+            <remarks>
+            <example>
+            下面的代码演示了执行SQL并获取数据的例子
+            <code>
+            <![CDATA[
+             var data = from p in DBUtils.ExecuteEnumerable(this.ctx, "Select FId,FElementTypeId FROM t_Form")
+                        select new
+                        {
+                            Id = p.GetValue<string>(0),
+                            ElementTypeId = p.GetValue<int>(1,Convert.ToInt32)
+                        };
+             foreach (var item in data)
+             {
+                 Console.WriteLine(item.Id + item.ElementTypeId.ToString());
+             }
+            ]]>
+            </code>
+            </example>
+            </remarks>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteObject``1(Kingdee.BOS.Context,System.String,Kingdee.BOS.Orm.Metadata.DataEntity.IDataEntityType,System.Collections.Generic.IDictionary{System.String,System.Type},System.Data.CommandType,Kingdee.BOS.SqlParam[])">
+            <summary>
+            执行指定的SQL并返回默认的一批使用实体集合描述的数据。
+            </summary>
+            <param name="ctx">上下文对象</param>
+            <param name="strSQL">要执行的SQL语句</param>
+            <param name="dt">如果指定此参数，那么执行后的SQL将自动按此类型填充数据。否则将根据返回的记录集自动创建类型。</param>
+            <param name="propertyTypeMaps">如果指定此参数，可以设定某个字段应该的数据类型。</param>
+            <param name="cmdType">指定SQL的类型</param>
+            <param name="paramList">参数类型</param>
+            <returns>一组动态实体对象。</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.GetDisplayValue(System.Object,Kingdee.BOS.Orm.Metadata.DataEntity.ISimpleProperty,System.Func{System.Object,System.Object})">
+            <summary>
+            获取显示值，包含解密字段解密
+            </summary>
+            <param name="value"></param>
+            <param name="property"></param>
+            <param name="converterFunc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.BuildDtFromDbReader(System.Data.IDataReader,System.Collections.Generic.IDictionary{System.String,System.Type},Kingdee.BOS.Orm.Metadata.DataEntity.ISimpleProperty[]@)">
+            <summary>
+            根据DataReader的字段类型信息，推导出一个动态实体类型，可以指定特定的列使用指定的数据类型
+            </summary>
+            <param name="reader">数据读取器</param>
+            <param name="propertyTypeMaps">可选参数，可以指定特定名称的列使用指定的数据类型。</param>
+            <param name="propertitesMap">返回某个索引对应的属性描述符。</param>
+            <returns>一个新的动态实体类型。</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteDynamicObject(Kingdee.BOS.Context,System.String,Kingdee.BOS.Orm.Metadata.DataEntity.IDataEntityType,System.Collections.Generic.IDictionary{System.String,System.Type},System.Data.CommandType,Kingdee.BOS.SqlParam[])">
+            <summary>
+            执行指定的SQL并返回默认的一批使用DynamicObject集合描述的数据。
+            </summary>
+            <param name="ctx">上下文对象</param>
+            <param name="strSQL">要执行的SQL语句</param>
+            <param name="dt">如果指定此参数，那么执行后的SQL将自动按此类型填充数据。否则将根据返回的记录集自动创建类型。</param>
+            <param name="propertyTypeMaps">如果指定此参数，可以设定某个字段应该的数据类型。</param>
+            <param name="cmdType">指定SQL的类型</param>
+            <param name="paramList">参数类型</param>
+            <returns>一组动态实体对象。</returns>
+            <example>
+            <code>
+            string sql = "SELECT FDESCRIPTION,FLOCALEID FROM T_BF_PROCDEF_L WHERE FID = @FID";
+            DynamicObjectCollection objs = DBUtils.ExecuteDynamicObject(this.Context, sql, paramList: new SqlParam[] { new SqlParam("@FID", DbType.String, metadata.Id) });
+            foreach (DynamicObject obj in objs)
+            {
+                if (metadata.Description == null)
+                {
+                    metadata.Description = new LocaleValue();
+                }
+                int localeId = Convert.ToInt32(obj["FLOCALEID"]);
+                metadata.Description[localeId] = (string)obj["FDESCRIPTION"];
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ClearConnectionStrings">
+            <summary>
+            清除数据库连接串的缓存
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.TestDbOpenConnection(Kingdee.BOS.DatabaseType,Kingdee.BOS.DataCenterInfo.IDataCenterInfo,System.Boolean,System.String@)">
+            <summary>
+            测试数据库连接
+            </summary>
+            <param name="dbType"></param>
+            <param name="dataCenterInfo"></param>
+            <param name="bIsDBAConnection"></param>
+            <param name="strErrMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.GetDbConnection(Kingdee.BOS.DataCenterInfo.AbstarctDataCenterInfo,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="dbFacty"></param>
+            <param name="bSYSDBA">是否连接DBA用户执行当前sql</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.Execute(Kingdee.BOS.Context,System.String)">
+            <summary>
+            执行SQL语句
+            </summary>
+            <param name="ctx">上下文对象</param>
+            <param name="strSQL">要执行的SQL语句</param>
+            <returns>影响的行数</returns>
+            <remarks>
+            Execute方法用于不需要返回数据的执行语句，如DDL、UPDATE、DELETE语句。返回值为影响的行数。
+            Execute方法每次仅执行一条语句，对SQLServer支持多条语句一起执行，因此多条语句拼在一起执行没有问题，但Oracle下执行会报错。
+            如果需要执行多条语句，请调用批量执行方法：ExecuteBatch。
+            如果要执行SELECT语句，建议使用ExecuteReader方法。
+            </remarks>
+            <example>
+            <code>
+            Execute(ctx, " CREATE TABLE T_TEMP(FID INT NOT NULL, FNAME VARCHAR(10) NULL ) ");
+            </code>
+            </example>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteWithNewCn(Kingdee.BOS.Context,System.String,System.Boolean)">
+             <summary>
+            创建一个新连接，执行SQL语句
+             处理在sessionscope下，需要执行DDL语句导致事务提交的问题
+             </summary>
+             <param name="ctx"></param>
+             <param name="strSQL"></param>
+             <param name="bNewCn">是否需要创建一个新连接</param>
+             <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.Execute(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam)">
+            <summary>
+            执行带查询参数的SQL语句
+            </summary>
+            <param name="ctx">上下文对象</param>
+            <param name="strSQL">要执行的SQL语句</param>
+            <param name="param">SQL语句的参数</param>
+            <returns>影响的行数</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteWithNewCn(Kingdee.BOS.Context,System.String,Kingdee.BOS.SqlParam,System.Boolean)">
+            <summary>
+            创建一个新连接，执行SQL语句
+            处理在sessionscope下，需要执行DDL语句导致事务提交的问题
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="param"></param>
+            <param name="bNewCn">是否需要创建一个新连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.Execute(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            执行SQL
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteWithNewCn(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Boolean)">
+            <summary>
+            创建一个新连接，执行SQL语句
+            处理在sessionscope下，需要执行DDL语句导致事务提交的问题
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <param name="bNewCn">是否需要创建一个新连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.Execute(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Boolean)">
+            <summary>
+            执行SQL
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteWithNewCn(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Boolean,System.Boolean)">
+            <summary>
+            创建一个新连接，执行SQL语句
+            处理在sessionscope下，需要执行DDL语句导致事务提交的问题
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <param name="needTranslate"></param>
+            <param name="bNewCn">是否需要创建一个新连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteWithTime(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam},System.Int32)">
+            <summary>
+            执行指定sql语句，并引入超时机制（非特殊的大事务功能不要定制这个参数）
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteScalar(Kingdee.BOS.Context,System.String,System.Collections.Generic.List{Kingdee.BOS.SqlParam})">
+            <summary>
+            返回数据的第一行第一列
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="strSQL">需要执行的SQL语句</param>
+            <param name="paramList">产生列表</param>
+            <returns>返回数据的第一行第一列</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteScalar``1(Kingdee.BOS.Context,System.String,``0,Kingdee.BOS.SqlParam[])">
+            <summary>
+            执行某个SQL并获取第一行第一列的值，如果数据未找到或为DBNULL，那么将返回缺省值
+            </summary>
+            <typeparam name="T">返回的数据类型</typeparam>
+            <param name="ctx">上下文</param>
+            <param name="strSql">要执行的SQL语句</param>
+            <param name="defaultValue">如果数据未找到或为DBNULL，那么将返回此值。如果T是int?，那么可以指定此参数为null，从而实现没有记录时为null而不是0的功能。</param>
+            <param name="paramList">参数</param>
+            <returns>结果</returns>
+            <example>示例根据条件获取记录数，若没有数据，记录数为0
+            <code>
+            <![CDATA[
+            string sql = " SELECT COUNT(1) FROM T_DEMO ";
+            int count = DBUtils.ExecuteScalar<int>(this.Context, sql, 0, null);
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.BulkInserts(Kingdee.BOS.Context,System.String,System.String,System.Data.DataTable)">
+            <summary>
+            批量插入数据
+            </summary>
+            <remarks>
+            可以指定建表语句将数据批量插入到新表中。在使用临时表实现业务功能时指定该参数非常方便。
+            INSERT语句的字段必须与DataTable匹配。否则执行将报错。
+            </remarks>
+            <param name="ctx">上下文对象</param>
+            <param name="InsertstrSql">要执行的INSERT语句</param>
+            <param name="CreateSql">建表语句，为""表示没有建表语句</param>
+            <param name="dt">插入表的数据</param>
+            <example>
+            下面代码展示使用临时表实现大数据量关联查询
+            <code>
+            DataTable dt = new DataTable();
+            dt.Columns.Add("FID");
+            dt.BeginLoadData();
+            foreach (var id in fIds)
+            {
+                dt.LoadDataRow(new object[] { id }, true);
+            }
+            dt.EndLoadData();
+            dt.TableName = "T_TEMP";
+            using (KDTransactionScope scope = new KDTransactionScope(System.Transactions.TransactionScopeOption.Suppress))
+            {
+                //创建临时表并插入数据
+                DBUtils.BulkInserts(ctx, "INSERT INTO T_TEMP values(@FID)", "create table T_TEMP (FID INT)", dt);
+                scope.Complete();
+            }
+            //关联取数
+            IDataReader reader = DBUtils.ExecuteReader(ctx, " SELECT * FROM T_DEMO INNER JOIN T_TEMP ON T_DEMO.FID = T_TEMP.FID ");
+            //删除临时表
+            DeleteTemporaryTable(ctx, "T_TEMP");
+            </code>
+            </example>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteBatch(Kingdee.BOS.Context,System.Collections.Generic.List{Kingdee.BOS.App.Data.SqlObject})">
+            <summary>
+            批量执行SQL语句
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="lstSqlObj">需要执行SQL语句的对象集合</param>
+            <returns>最后一条语句影响的行数</returns>
+            <example>
+            示例展示使用ExecuteBatch批量执行sql语句方法。
+            <code>
+            <![CDATA[
+            List<SqlObject> listSql = new List<SqlObject>();
+            foreach (FieldValue val in fieldValues)
+            {
+                string sql = string.Format("UPDATE T_DEMO set {0} = {1} where FID = @FID ", val.FieldName, val.Value);
+                
+                SqlObject sqlObj = new SqlObject(sql, new Param("@FID", System.Data.DbType.Int32, id));
+                listSql.Add(sql);
+            }
+            DBUtils.ExecuteBatch(Context, listSql);
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteBatch(Kingdee.BOS.Context,System.Collections.Generic.List{System.String},System.Int32)">
+            <summary>
+            不带参数的批量执行
+            </summary>
+            <remarks>
+            批量运行SQL，适用于没有参数的多个SQL语句。要注意该方法的使用场景，应尽量使用参数化方法以减少执行计划分析时间。
+            </remarks>
+            <param name="ctx"></param>
+            <param name="sqlArray">语句集合</param>
+            <param name="batchSize">批大小</param>
+            <returns>最后一条语句影响的行数</returns>
+            <example>
+            <code>
+            foreach (string tablName in tableNames)
+            {
+                batchSql.Add(string.Format(" delete from {0} t where exists (select 1 from T_Task where FID = t.FTaskId) ", tablName));
+            }
+            DBUtils.ExecuteBatch(this.Context, batchSql, 50);
+            </code>
+            </example>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteBatchWithTime(Kingdee.BOS.Context,System.Collections.Generic.List{Kingdee.BOS.App.Data.SqlObject},System.Int32)">
+            <summary>
+            提供带有超时机制设置的批量执行接口
+            </summary>
+            <param name="ctx"></param>
+            <param name="lstSqlObj"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteBatchWithTime(Kingdee.BOS.Context,System.Collections.Generic.List{System.String},System.Int32,System.Int32)">
+            <summary>
+            提供带有超时机制设置的批量执行接口
+            </summary>
+            <param name="ctx"></param>
+            <param name="sqlArray"></param>
+            <param name="batchSize"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,Kingdee.BOS.BatchSqlParam,System.String)">
+            <summary>
+            批量查询，用于数组条件查询，select的字段子句为标准语句
+            </summary>
+            <param name="ctx"></param>
+            <param name="param"></param>
+            <param name="selectFieldSql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,Kingdee.BOS.BatchSqlParam,System.String,System.String)">
+            <summary>
+            批量查询，用于数组条件查询，select的字段子句为标准语句，不支持变量和函数，若需要变量和函数请用ExecuteReaderKSQL
+            </summary>
+            <param name="ctx"></param>
+            <param name="param">查询数据参数</param>
+            <param name="selectFieldSql">select 字段语句，不含select关键字(如:" t1.FID, t1.FNumber, t2.FName ")</param>
+            <param name="where">其他条件（不支持参数化，参数请在param里设置where条件）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteReader(Kingdee.BOS.Context,Kingdee.BOS.BatchSqlParam,System.String,System.String,System.Boolean)">
+            <summary>
+            批量查询，用于数组条件查询，select的字段子句为标准语句，不支持变量和函数，若需要变量和函数请用KSQL语法并且设置参数KSQLSyntax=true
+            </summary>
+            <param name="ctx"></param>
+            <param name="param">查询数据参数</param>
+            <param name="selectFieldSql">select 字段语句，不含select关键字(如:" t1.FID, t1.FNumber, t2.FName ")</param>
+            <param name="KSQLSyntax">KSQL语法（selectFieldSql和where都是KSQL语法）</param>
+            <param name="where">其他条件（不支持参数化，参数请在param里设置where条件）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.BatchSelectKSQL(Kingdee.BOS.Context,Kingdee.BOS.BatchSqlParam,System.String,System.String)">
+            <summary>
+            批量查询，用于数组条件查询，select的字段子句为KSQL语句()
+            </summary>
+            <param name="ctx"></param>
+            <param name="param">查询数据参数</param>
+            <param name="selectFieldSql">select 字段语句，不含select关键字(如:" t1.FID, t1.FNumber, t2.FName ")</param>
+            <param name="where">其他条件，KSQL语法（不支持参数化，参数请在param里设置where条件）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteMerge(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            执行merge，sqlserver、oracle的Merge语法不同，Mysql、postgresql无Merge语法
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL"></param>
+            <param name="paramList"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.ExecuteDynamicObject(Kingdee.BOS.Context,Kingdee.BOS.BatchSqlParam,System.String,System.String)">
+            <summary>
+            批量查询，用于数组条件查询
+            </summary>
+            <param name="ctx"></param>
+            <param name="param">查询数据参数</param>
+            <param name="selectFieldSql">select 字段语句，不含select关键字(如:" t1.FID, t1.FNumber, t2.FName ")</param>
+            <param name="where">其他条件（不支持参数化，参数请在param里设置where条件）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.BatchUpdate(Kingdee.BOS.Context,Kingdee.BOS.BatchSqlParam,System.String)">
+            <summary>
+            批量更新数据
+            </summary>
+            <param name="ctx"></param>
+            <param name="param">更新数据参数</param>
+            <param name="where">其他条件（不支持参数化，参数请在param里设置where条件）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.BatchDelete(Kingdee.BOS.Context,Kingdee.BOS.BatchSqlParam,System.String)">
+            <summary>
+            批量删除数据
+            </summary>
+            <param name="ctx"></param>
+            <param name="param">数据参数</param>
+            <param name="where">其他条件（不支持参数化，参数请在param里设置where条件）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.IsExistTable(Kingdee.BOS.Context,System.String)">
+            <summary>
+            检测帐套是否存在某个物理表
+            </summary>
+            <param name="ctx">上下文对象</param>
+            <param name="tableName">要检测的表名称</param>
+            <returns>true表示存在此物理表</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.IsExistTableField(Kingdee.BOS.Context,System.String,System.String)">
+            <summary>
+            检测帐套是否存在某个物理表的某个字段列
+            </summary>
+            <param name="ctx"></param>
+            <param name="tableName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.IsExistView(Kingdee.BOS.Context,System.String)">
+            <summary>
+            判断视图是否存在
+            </summary>
+            <param name="ctx"></param>
+            <param name="ViewName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.UpdateXml(Kingdee.BOS.Context,System.String,System.Collections.Generic.IEnumerable{Kingdee.BOS.SqlParam})">
+            <summary>
+            更新xml
+            </summary>
+            <param name="ctx"></param>
+            <param name="strSQL">SQL语句</param>
+            <param name="paramList">参数：value为xml（string）</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.GetColumnType(System.Int32,Kingdee.BOS.DatabaseType)">
+            <summary>
+            取得列类型字符串
+            </summary>
+            <param name="providerType">providerType，可以由IDataReader.GetSchemaTable()返回的Table中的DataRow来取，即dr["ProviderType"]</param>
+            <param name="DatabaseType">数据库类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.CreateSessionTemplateTable(Kingdee.BOS.Context,System.String,System.String)">
+            <summary>
+            创建基于会话基本的临时表，在Oracle下直接返回表名（在创建数据库的时候已经创建，这里不考虑是否存在）
+            在SQL Server下返回局部临时表#
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="tableName">表名</param>
+            <param name="creatSql">如果是SQL Server的话传入Create Table T（）语句中的"（）"部分，如创建Create Table T1（fid int)，那么传入参数为(fid int)，Oracle忽略改参数</param>
+            <returns>Oracle下返回传入的表名，SQL server下返回局部临时表</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.CreateDynamicSessionTempTable(Kingdee.BOS.Context,Kingdee.BOS.App.Data.Object.KDTempTable,System.String)">
+            <summary>
+            创建动态临时表，请在事务外使用该方法。
+            </summary>
+            <param name="ctx"></param>
+            <param name="table">需要创建的临时表的结构</param>
+            <param name="isolation">隔离标识，需要在同一个链接中创建2个相同结构的临时表时需要设置不同的隔离标识</param>
+            <returns>临时表名</returns>
+            <example>
+            示例展示使用动态临时表的方法。首先应保证在所有事务外部创建临时表。
+            <code>
+            <![CDATA[
+                Kingdee.BOS.App.Data.Object.KDTempTable table = new Kingdee.BOS.App.Data.Object.KDTempTable();
+                table.AddCol(new KDColumn("FID", KSQLDataType.INT, true));  //FID     int           null
+                table.AddCol(new .VarcharColumn("FNumber", 30));                         //FNumber varchar(30)   null
+                table.AddCol(new DecimalColumn("FQty", false, new KDDefault(KSQLDataType.DECIMAL, "0")));   //FQty decimal(23,10) not null default 0
+                table.AddCol(new ComputedColumn("FYearPeriod", "FYear * 100 + FPeriod"));
+                DBUtils.CreateDynamicSessionTemplateTable(ctxValidate, table);
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.CreateDynamicSessionTempTableIndex(Kingdee.BOS.Context,Kingdee.BOS.App.Data.Object.KDIndex)">
+            <summary>
+            创建动态会话临时表索引
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="table">临时表</param>
+            <returns></returns>
+            <example>
+            示例创建动态临时表索引的方法。首先应保证在所有事务外部创建临时表。
+            <code>
+            <![CDATA[
+                Data.Object.KDIndex idx = new Data.Object.KDIndex();
+                idx.Name = "I" + table.Name.Substring(1, 28) + "_1";
+                idx.Add("FID");
+                idx.IsClustered = false;
+                idx.IsUnique = false;
+                table.AddIndex(idx);
+                DBUtils.CreateDynamicSessionTempTableIndex(ctxValidate, idx);
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.CreateSessionTemplateTableIndex(Kingdee.BOS.Context,System.String)">
+            <summary>
+            创建会话临时表索引
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="indexSql">索引语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.DropSessionTemplateTable(Kingdee.BOS.Context,System.String)">
+            <summary>
+            删除临时表
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="tableName">表名，不带#的表</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.DropDynamicSessionTemplateTable(Kingdee.BOS.Context,System.String)">
+            <summary>
+            删除临时表
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="tableName">表名，不带#的表</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.BulkCopy(Kingdee.BOS.Context,System.Data.DataTable,System.Boolean)">
+            <summary>
+            提供给Oracle的批量数据插入的方法，解决BulkInserts在基于sun solaris操作系统出现的sql*net more data from client
+            SQL Server下默认调用原有的BulkInserts方法
+            注意：1：NOT NULL类型的字段，即使有缺省值也需要在dt参数里面存在，否则出现ORA-26010错误
+                  2：数据类型必须一致，如数据库定义为number（9），必须对应int，而不是long类型
+                  3:非使用bulkinserts时出现网络等待的问题不要使用
+            建议通过下面的方式来构建datatable
+               sql="select * from table where 1=0"
+               DataTable dt=new DataTable();
+               using(IDataReader dr=DBUtils.ExecuteReader(ctx,sql))
+               {
+            		dt.Load(dr);
+               }
+            </summary>
+            <param name="ctx"></param>
+            <param name="dt"></param>
+            <param name="UseTransaction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.BulkCopyNoTransaction(Kingdee.BOS.Context,System.Data.DataTable)">
+            <summary>
+            明确不用开启新事务，使用这个方法
+            </summary>
+            <remarks>由于历史原因，不便修改BulkCopy</remarks>
+            <param name="ctx"></param>
+            <param name="dt"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.BulkCopy(Kingdee.BOS.Context,System.String,System.Data.DataTable,System.Boolean)">
+            <summary>
+            提供给Oracle的批量数据插入的方法，解决BulkInserts在基于sun solaris操作系统出现的sql*net more data from client
+            SQL Server下默认调用原有的BulkInserts方法		
+            注意：1：NOT NULL类型的字段，即使有缺省值也需要在dt参数里面存在，否则出现ORA-26010错误
+                  2：数据类型必须一致，如数据库定义为number（9），必须对应int，而不是long类型
+                  3:非使用bulkinserts时出现网络等待的问题不要使用
+            建议通过下面的方式来构建datatable
+               sql="select * from table where 1=0"
+               DataTable dt=new DataTable();
+               using(IDataReader dr=DBUtils.ExecuteReader(ctx,sql))
+               {
+            		dt.Load(dr);
+               }
+            </summary>
+            <param name="ctx"></param>
+            <param name="CreateSql">如果目标表不存在，可以通过传入该参数创建</param>
+            <param name="dt"></param>
+            <param name="UseTransaction"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.BulkCopyNoTransaction(Kingdee.BOS.Context,System.String,System.Data.DataTable)">
+            <summary>
+            明确不用开启新事务，使用这个方法
+            </summary>
+            <remarks>由于历史原因，不便修改BulkCopy</remarks>
+            <param name="cmd"></param>
+            <param name="dt"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.DBUtils.GenerateTableSQL(Kingdee.BOS.Context,System.Collections.ArrayList,Kingdee.BOS.SQL.KSqlExportOption)">
+            <summary>
+            获取创建表的SQL语句
+            </summary>
+            <param name="ctx"></param>
+            <param name="tableNames"></param>
+            <param name="expOpt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.EncryptDataReader.Descryption(System.Object,System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="dbVal">数据库查询值</param>
+            <param name="colName">列名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.EncryptDataReader.Descryption(System.Object,System.Int32)">
+            <summary>
+            解密
+            </summary>
+            <param name="dbVal">数据库查询值</param>
+            <param name="colIdx">列索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.EncryptTool.Encrypt(System.Object,System.Int32,System.Boolean)">
+            <summary>
+            对值加密
+            </summary>
+            <param name="value">传入值</param>
+            <param name="type">加密类型</param>
+            <param name="isString">是否字符串</param>
+            <exception cref="T:System.Exception">密钥异常时抛出异常</exception>
+            <returns>加密值</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.EncryptTool.Descryption(System.Object,System.Int32,System.Boolean)">
+            <summary>
+            对加密结果解密
+            </summary>
+            <param name="value">加密结果</param>
+            <param name="type">加密类型</param>
+            <param name="isString">是否字符串</param>
+            <exception cref="T:System.Exception">密钥异常时抛出异常</exception>
+            <returns>解密值</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.EncryptTool.GetSecretKey">
+            <summary>
+            获得加密密钥：App获取数据密钥的方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.KDatabaseFactory.CreateTestDataBase(Kingdee.BOS.Context)">
+            <summary>
+            给测试用的
+            </summary>
+            <param name="ctx"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.KDTransactionScope">
+            <summary>
+            提供基于TransactionScope的事务功能。
+            </summary>
+            <remarks>
+            事务操作类型由参数option指定，对于请求事务Required和RequiresNew使用ReadCommitted事务隔离级别。
+            对于事务操作类型和事务隔离级别请参照msdn帮助。
+            </remarks>
+            <example>下面例子展示如何使用事务保存业务对象数据
+            <code>
+                 using (KDTransactionScope trans = new KDTransactionScope(TransactionScopeOption.Required))
+                {
+                    DynamicObject[] dynamicObjects = null;
+                    BusinessDataWriter write = new BusinessDataWriter(ctx);
+                    dynamicObjects = write.Save(dataEntities);
+                    trans.Complete();
+                }
+            </code>
+            </example>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.KDTransactionScope.#ctor(System.Transactions.TransactionScopeOption)">
+            <summary>
+            提供基于TransactionScope的事务功能。
+            </summary>
+            <param name="option"></param>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.OLEDbDriver">
+            <summary>
+            使用KSql实现的驱动
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.OLEDbDriver.BeginTransaction(System.Data.IDbTransaction)">
+            <summary>
+            启动事务
+            </summary>
+            <param name="dbTransaction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.MySql.MySqlBulkCopyTask.GeneralBulkInsertSql(System.Data.IDbCommand)">
+            <summary>
+            生成BulkInsert的SQL语句
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.PostgreSql.PostgreSqlDatabase.ByteArrayToByteaTextEscaped(System.Byte[],Kingdee.BOS.App.Data.PostgreSql.StringEncodingInfo)">
+            <summary>
+            Binary data with possible older style octal escapes, quoted.
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.PostgreSql.PostgreSqlDatabase.IsStringType(System.Data.DbType)">
+            <summary>
+            判断是否为字符串类别。
+            </summary>
+            <param name="dbType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.PostgreSql.PostgreSqlDatabase.CreateParameter(System.Boolean,System.Data.DbType,System.Object,System.Char,System.Int32,System.Int32)">
+            <summary>
+            创建参数。
+            </summary>
+            <param name="provider"></param>
+            <param name="isStrType"></param>
+            <param name="dbType"></param>
+            <param name="value"></param>
+            <param name="parPrefix"></param>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Object.KDColumn.GetCreateString">
+            <summary>
+            create table的列的string，格式为KSQL语法。 如：FID varchar(20) not null
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Kingdee.BOS.App.Data.Object.KDColumn.Length">
+            <summary>
+            长度（字节数）
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.App.Data.Object.KDColumn.Scole">
+            <summary>
+            精度（仅数值类型）
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.App.Data.Object.KDColumn.ColDefault">
+            <summary>
+            缺省值，可以为null
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Object.DecimalColumn.#ctor(System.String,System.Boolean,Kingdee.BOS.App.Data.Object.KDDefault)">
+            <summary>
+            默认长度和精度：23，10
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Object.DecimalColumn.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Kingdee.BOS.App.Data.Object.KDDefault)">
+            <summary>
+            数值列
+            </summary>
+            <param name="name">列名</param>
+            <param name="prec"></param>
+            <param name="scole">小数位数</param>
+            <param name="allowNull"></param>
+            <param name="def"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Object.KDIndex.#ctor(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            索引构造函数
+            </summary>
+            <param name="idxName">索引名</param>
+            <param name="colNames">字段名列表</param>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.Object.KDTempTable">
+            <summary>
+            临时表，sqlserver和oracle临时表机制不同，使用临时表应保证在事务外创建。应避免在操作插件和服务插件中创建临时表。
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Object.KDTempTable.#ctor">
+            <summary>
+            临时表表名由系统根据create语句自动生成，相同字段表名相同
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Object.KDTempTable.#ctor(System.String)">
+            <summary>
+            临时表表名由系统根据create语句自动生成，相同字段表名相同
+            </summary>
+            <param name="isolationString">在同一个cn中相同create语句如果需要生成不同表名，需使用该构造函数，并设置不同的isolationString</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Object.KDTempTable.GetColsCreateString">
+            <summary>
+            列的建表脚本，包含括号和列定义。如：(FID varchar(20) not null, FName varchar(30) null)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.MySql.MySqlDatabase.CreateParameter(System.Boolean,System.Data.DbType,System.Object,System.Char,System.Int32,System.Int32)">
+            <summary>
+            创建参数。
+            </summary>
+            <param name="provider"></param>
+            <param name="isStrType"></param>
+            <param name="dbType"></param>
+            <param name="value"></param>
+            <param name="parPrefix"></param>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.MySql.MySqlDatabase.IsStringType(System.Data.DbType)">
+            <summary>
+            判断是否为字符串类别。
+            </summary>
+            <param name="dbType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.MySql.MySqlDatabase.ExecuteBatch(System.Collections.Generic.List{System.String},System.Int32,System.Int32)">
+            <summary>
+            批量执行
+            </summary>
+            <param name="sqlArray"></param>
+            <param name="batchSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Oracle.OracleDatabase.GetBulkInsertBatchSize">
+            <summary>
+            在Web.config配置节点 appSettings 中加入： add key="OracleBulkInsertBatchSize" value="5000" 
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Oracle.OracleDatabase.GeneralBulkInsertSql(System.Data.DataTable)">
+            <summary>
+            生成BulkInsert的SQL语句
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Oracle.OracleDatabase.BulkCopyWithTransaction(System.Data.DataTable)">
+            <summary>
+            OracleBulkCopy使用事务进行批量数据插入
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Oracle.OracleDatabase.BulkCopyWithNoTransaction(System.Data.DataTable)">
+            <summary>
+            OracleBulkCopy不使用事务进行批量数据插入
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Oracle.OracleDatabase.GetParameter(System.Data.Common.DbConnection,System.String,System.Data.DbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="conn"></param>
+            <param name="name"></param>
+            <param name="dbType"></param>
+            <param name="size"></param>
+            <param name="direction"></param>
+            <param name="nullable"></param>
+            <param name="precision"></param>
+            <param name="scale"></param>
+            <param name="sourceColumn"></param>
+            <param name="sourceVersion"></param>
+            <param name="value"></param>
+            <param name="udttypename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Oracle.OracleDatabase.ExecuteBatchParallel(System.Collections.Generic.List{System.String},System.Int32,System.Int32)">
+            <summary>
+            如果不能明确执行的语句是否有关联关系，最好不要用使用这个方法，否则将导致阻塞和死锁或者执行超时
+            </summary>
+            <param name="sqlArray"></param>
+            <param name="batchSize"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Oracle.OracleDatabase.getUserTableInfo(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Oracle.OracleDatabase.Convert2OracleDbType(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="stype"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Oracle.OracleOrmTransaction.GetDeleteWhere4DBType(Kingdee.BOS.Orm.Metadata.Database.DbMetadataTable,Kingdee.BOS.Orm.Metadata.Database.DbMetadataTable,System.String,System.String)">
+            <summary>
+            ORA库获取删除SQL:使用IN查询
+            </summary>
+            <param name="rootTable"></param>
+            <param name="currentTable"></param>
+            <param name="pkTable"></param>
+            <param name="currentTableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.SqlObject.#ctor(System.String,System.Collections.Generic.List{Kingdee.BOS.SqlParam})">
+            <summary>
+            sql对象
+            </summary>
+            <param name="sql">sql语句</param>
+            <param name="paramList">参数列表</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.SqlObject.#ctor(System.String,Kingdee.BOS.SqlParam)">
+            <summary>
+            sql对象
+            </summary>
+            <param name="sql">sql语句</param>
+            <param name="param">参数</param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Sql.SqlDatabase.GetArrayValue(System.Collections.IEnumerable)">
+            <summary>
+            转化为string数值
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Sql.SqlDatabase.GetParameter(System.Data.Common.DbConnection,System.String,Kingdee.BOS.KDDbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="conn"></param>
+            <param name="name"></param>
+            <param name="custemDbType"></param>
+            <param name="size"></param>
+            <param name="direction"></param>
+            <param name="nullable"></param>
+            <param name="precision"> 基于sql server 对于decimal类型，如果值为0，那么将使用默认值38</param>
+            <param name="scale">基于sql server 对于decimal类型，如果值为0，那么将使用默认值4</param>
+            <param name="sourceColumn"></param>
+            <param name="sourceVersion"></param>
+            <param name="value"></param>
+            <returns>基于精度的默认处理问题，如果不设置精度decimal类型采用23，10</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Sql.SqlDatabase.GetParameter(System.Data.Common.DbConnection,System.String,System.Data.DbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="conn"></param>
+            <param name="name"></param>
+            <param name="dbType"></param>
+            <param name="size"></param>
+            <param name="direction"></param>
+            <param name="nullable"></param>
+            <param name="precision">基于sql server 驱动 对于decimal类型，如果值为0，那么将使用默认值38</param>
+            <param name="scale">基于sql server驱动 对于decimal类型，如果值为0，那么将使用默认值4</param>
+            <param name="sourceColumn"></param>
+            <param name="sourceVersion"></param>
+            <param name="value"></param>
+            <param name="udttypename"></param>
+            <returns>基于精度的默认处理问题，如果不设置精度decimal类型采用23，10</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Sql.SqlDatabase.CopyDataToDestination(System.Data.Common.DbCommand,System.Data.DataTable)">
+            <summary>
+            批量数据插入
+            </summary>
+            <param name="cmd"></param>
+            <param name="table"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Sql.SqlDatabase.SqlBukCopyWihtMultiRows(System.Data.DataTable,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlBulkCopyOptions)">
+            <summary>
+            超过定义的分录使用sqlbulkcopy
+            </summary>
+            <param name="table"></param>
+            <param name="cn"></param>
+            <param name="sco"></param>
+            2020.08.25将SqlBulkCopyOptions作为属性传入
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Sql.SqlDatabase.InsertWihtMultiRows(System.Data.DataTable,System.Data.SqlClient.SqlCommand)">
+            <summary>
+            使用insert into解决 insert bulk带来page锁导致阻塞问题
+            </summary>
+            <param name="table"></param>
+            <param name="cmd"></param>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Sql.SqlDatabase.ExecuteBatch(System.Collections.Generic.List{System.String},System.Int32,System.Int32)">
+            <summary>
+            批量执行
+            </summary>
+            <param name="sqlArray"></param>
+            <param name="batchSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.Sql.SqlDatabase.GeneralUdtParamValue(System.Int32,System.Data.SqlClient.SqlParameter,System.String[])">
+            <summary>
+            由于采用DataTable存在列数据类型无法匹配的问题，所以调整为SqlMetaData
+            </summary>
+            <param name="itype"></param>
+            <param name="param"></param>
+            <param name="sarrayvalue"></param>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.TransactionScopeConnections">
+            <summary>
+            	This class manages the connections that will be used when transactions are active
+            	as a result of instantiating a <see cref="T:System.Transactions.TransactionScope"/>. When a transaction
+            	is active, all database access must be through this single connection unless you want
+            	to use a distributed transaction, which is an expensive operation.
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.TransactionScopeConnections.GetConnection(Kingdee.BOS.App.Data.IDatabase)">
+            <summary>
+            	Returns a connection for the current transaction. This will be an existing <see cref="T:System.Data.Common.DbConnection"/>
+            	instance or a new one if there is a <see cref="T:System.Transactions.TransactionScope"/> active. Otherwise this method
+            	returns null.
+            </summary>
+            <param name="db"></param>
+            <returns>Either a <see cref="T:System.Data.Common.DbConnection"/> instance or null.</returns>
+        </member>
+        <member name="M:Kingdee.BOS.App.Data.TransactionScopeConnections.OnTransactionCompleted(System.Object,System.Transactions.TransactionEventArgs)">
+            <summary>
+            	This event handler is called whenever a transaction is about to be disposed, which allows
+            	us to remove the transaction from our list and dispose the connection instance we created.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Kingdee.BOS.App.ReadOnlyDBScope">
+            <summary>
+            标记访问只读数据库范围
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.App.ReadOnlyDBScope.#ctor(System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="dbCommandTimeOut">数据库执行超时时间，-1按系统默认值</param>
+        </member>
+        <member name="P:Kingdee.BOS.App.ReadOnlyDBScope.CommandTimeOut">
+            <summary>
+            数据库执行SQL超时时间
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.App.ReadOnlyDBScope.Current">
+            <summary>
+            当前线程的只读数据库范围，未在范围内改变量为空
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.App.ServiceHelper">
+            <summary>
+            App服务帮助类，由此类GetService获取App服务。
+            </summary>
+            <remarks>
+            该类只针对App应用提供访问服务，其他远程调用必须遵照契约访问。
+            <p>Web访问应用服务应由工厂服务提供。下面例子展示在客户端插件中如何按过滤条件获取一个轻量级组织对象。
+            （注：单据中已经有组织对象通常不需要另外获取，此例仅做为示例展示如何调用应用服务获取特定条件的业务对象）
+            <code>
+            <![CDATA[
+            Organization org = null;
+            Dictionary<long, Organization> dctOrganization = new Dictionary<long, Organization>();
+            List<SelectorItemInfo> selectKeys = new List<SelectorItemInfo>();
+            selectKeys.Add(new SelectorItemInfo("FOrgID"));
+            selectKeys.Add(new SelectorItemInfo("FNumber"));
+            selectKeys.Add(new SelectorItemInfo("FName"));
+            selectKeys.Add(new SelectorItemInfo("FOrgFunctions"));
+            OQLFilter oFilter = new OQLFilter();
+            OQLFilterHeadEntityItem ofilterItem = new OQLFilterHeadEntityItem();
+            ofilterItem.FilterString = String.Format(" FParentId = {0} and FForbidStatus='B' ", orgId);
+            oFilter.Add(ofilterItem);
+            DynamicObject[] objs = BOS.ServiceHelper.BusinessDataServiceHelper.Load(this.View.Context, FormIdConst.ORG_Organizations, selectKeys, oFilter);
+            foreach (DynamicObject obj in objs)
+            {
+                Organization org = new Organization(obj);
+                this.dctOrganization.Add(org.Id, org);
+            }
+            ]]>
+            </code>
+            </p>
+            </remarks>
+            <example>获取服务示例：
+            <code>
+            <![CDATA[
+            //示例1：获取物料ID为10001的物料对象
+            long materialId = 10001;
+            DynamicObjectType type = field.RefFormDynamicObjectType;
+            IViewService service = ServiceHelper.GetService<IViewService>();
+            DynamicObject material = service.LoadSingle(this._context, materialId, type);
+            ]]>
+            </code>
+            <code>
+            <![CDATA[
+            示例2：获取业务组织元数据
+            IMetaDataService metaservice = ServiceHelper.GetService<IMetaDataService>();
+            FormMetadata meta = metaservice.Load(Context, FormIdConst.ORG_Organizations) as FormMetadata;
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="T:Kingdee.BOS.App.Data.SessionScope">
+            <summary>
+            会话级连接对象，管理当前会话范围内connection，如果会话中有事务，会影响事务
+            </summary>
+        </member>
+    </members>
+</doc>

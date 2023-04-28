@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "kingdee.Cyext": {
+      "commandName": "Executable",
+      "executablePath": "D:\\vcs\\LbCkdVerify\\Code\\kingdee.cyext\\bin\\net40\\kingdee.Cyext.exe"
+    }
+  }
+}

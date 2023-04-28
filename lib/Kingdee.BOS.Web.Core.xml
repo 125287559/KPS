@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kingdee.BOS.Web.Core</name>
+    </assembly>
+    <members>
+        <member name="M:Kingdee.BOS.Web.Core.AbstractPage.InitEncryH5Params">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.Web.Core.AbstractFormPage.extjsPath">
+            <summary>
+            ext-js 基础库路径设置成变量，后续看是否存配置文件。（考虑页面重复加载的性能影响）
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.Web.Core.AbstractFormPage.jsDebugSuffix">
+            <summary>
+            js脚本的调试后缀
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.Web.Core.AbstractFormPage.jsKDTheme">
+            <summary>
+            图片皮肤
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.IWebFormService.InitObject(System.String,System.String)">
+            <summary>
+            返回业务功能窗体标识
+            </summary>
+            <param name="pageID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.AbstractWebFormService.InitObject(System.String,System.String)">
+            <summary>
+            返回业务功能窗体标识
+            </summary>
+            <param name="pageID">页面标识</param>
+            <returns></returns>
+        </member>
+        <member name="P:Kingdee.BOS.Web.Core.AbstractWebFormService.SessionManager">
+            <summary>
+            获取页面级的会话管理器
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.Web.Core.AbstractWebFormService.Context">
+            <summary>
+            上下文信息
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.Web.Core.ExceptionConverter">
+            <summary>
+            对需要转换提示的异常做处理，仅限非程序错误，而是使用不当导致
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.ExceptionConverter.GetExceptionFormat(System.Exception)">
+            <summary>
+            处理需要格式化的信息
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Kingdee.BOS.Web.Core.CommonSession.SessionName">
+            <summary>
+            本项目使用的 Session 名称
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.Web.Core.CommonSession.sessionManage">
+            <summary>
+            Session管理类
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.CommonSession.GetWebServiceUrl">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.CommonSession.GetSessionLockObj">
+            <summary>
+            获取会话级别锁对象
+            </summary>
+            <returns>会话级别锁对象</returns>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.CommonSession.GetCurrent(System.String)">
+            <summary>
+            根据UserToken获取用户当前会话
+            </summary>
+            <param name="userToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.CommonSession.AddOrUpdateContext(System.String,Kingdee.BOS.Context)">
+            <summary>
+            缓存用户上下文
+            </summary>
+            <param name="userToken"></param>
+            <param name="ctx"></param>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.CommonSession.GetContext(System.String)">
+            <summary>
+            根据UserToken获取用户上下文
+            </summary>
+            <param name="userToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.CommonSession.ClearUserSession(System.String)">
+            <summary>
+            清除用户会话缓存
+            </summary>
+            <param name="userToken"></param>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.CommonSession.RemoveContext(System.String)">
+            <summary>
+            移除Session中的Context缓存
+            </summary>
+            <param name="userToken"></param>
+        </member>
+        <member name="P:Kingdee.BOS.Web.Core.CommonSession.SessionManager">
+            <summary>
+            Session管理对象
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.Web.Core.ExceptionHandler">
+            <summary>
+            WebService异步操作 错误处理
+            </summary>
+            <remarks>
+            功能类似于KDExceptionHandler类，专门为eBOS WebService异步功能服务，处理异步过程中出现的错误
+            </remarks>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.ExceptionHandler.HandlerErr(System.Exception)">
+            <summary>
+            WebService异步错误处理
+            </summary>
+            <param name="Ex">异常信息</param>
+            <returns>
+            客户端页面指令，包括标示、内容
+            </returns>
+            <remarks>
+            V1.0 : K/3 V12.0 Johnny Ding 2008.6.18
+            1. 记录日志：提示类错误不记录日志，其他系统错误记录日志
+            2. 生成客户端页面指令，包括标示、内容：全部错误给出错误提示
+            </remarks>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.ExceptionHandler.LoggerErr(System.Exception)">
+            <summary>
+            异常信息写入日志
+            </summary>
+            <param name="Ex">异常信息</param>
+            <remarks>
+            通过调用KDExceptionHandle类实现功能
+            </remarks>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.ExceptionHandler.LoadData(System.Exception)">
+            <summary>
+            生成Web页面错误显示指令
+            </summary>
+            <param name="Ex"></param>
+            <returns>客户端指令</returns>
+            <remarks>
+            V1.0: K/3 V12.0 Johnny Ding 2008.6.18
+            生成的客户端指令包括如下内容：
+            ActionName = ShowErrMsg 
+            Key = Alert / Information 
+            Value = Err.Message
+            Property = Err.Detail
+            
+            暂时没有区分错误类型，生成不同的指令
+            </remarks>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.ExceptionHandler.GetModelTrialAction(System.String)">
+            <summary>
+            获取模块申请试用的组装action
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.Web.Core.ServiceOutputTypeAttribute">
+            <summary>
+            表示FormService输出到客户端的格式
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.Web.Core.ServiceCounterAttribute.CollectPerfDataMode">
+            <summary>
+            是否把执行时间追加到之前的操作；
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.ParamsHandler.ReadPostParamenters">
+            <summary>
+            用于Url和Post传参的两种方式，例如Ext.Tree。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.SessionManager.AddService(System.String,System.Type)">
+            <summary>
+            新增或更新服务类型
+            </summary>
+            <param name="serviceName"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.SessionManager.GetOrAdd``1(System.String,System.String,``0)">
+            <summary>
+            获取或创建一个视图对象。
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.SessionManager.ReleaseCurrentUserView(System.String)">
+            <summary>
+            释放当前用户的View
+            </summary>
+            <param name="userToken"></param>
+        </member>
+        <member name="M:Kingdee.BOS.Web.Core.SessionManager.WriteKeyLog">
+            <summary>
+            把key写入到日志中去
+            </summary>
+        </member>
+    </members>
+</doc>

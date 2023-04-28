@@ -1,0 +1,109 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+<PropertyGroup>
+    <TargetFrameworks>net40</TargetFrameworks>
+    <ApplicationIcon />
+
+    <StartupObject></StartupObject>
+	<IsPackable>true</IsPackable>
+    <EnableNETAnalyzers>false</EnableNETAnalyzers>
+    <Win32Resource />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <OutputType>Library</OutputType>
+    <AssemblyName>kingdee.Cylb</AssemblyName>
+    <RootNamespace>kingdee.Cylb</RootNamespace>
+    <SignAssembly>false</SignAssembly>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <Authors>chenYuan</Authors>
+    <Product>kingdee.Cylb</Product>
+    <Description>金蝶星空空扩</Description>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|AnyCPU'">
+    <OutputPath>bin</OutputPath>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>5</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+
+<ItemGroup>
+   <Reference Include="Newtonsoft.Json.dll">
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+   <Reference Include="System.Web" />
+  <Reference Include="System.Web.Extensions" />
+    <Reference Include="Kingdee.BOS.dll">
+      <HintPath>..\lib\Kingdee.BOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.App.dll">
+      <HintPath>..\lib\Kingdee.BOS.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.App.Core.dll">
+      <HintPath>..\lib\Kingdee.BOS.App.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.DataEntity.dll">
+      <HintPath>..\lib\Kingdee.BOS.DataEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.ServiceHelper.dll">
+      <HintPath>..\lib\Kingdee.BOS.ServiceHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.ServiceInterface.dll">
+      <HintPath>..\lib\Kingdee.BOS.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.ServiceFacade.KDServiceFx.dll">
+      <HintPath>..\lib\Kingdee.BOS.ServiceFacade.KDServiceFx.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.WebApi.Client.dll">
+      <HintPath>..\lib\Kingdee.BOS.WebApi.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.WebApi.ServicesStub.dll">
+      <HintPath>..\lib\Kingdee.BOS.WebApi.ServicesStub.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.Contracts.dll">
+      <HintPath>..\lib\Kingdee.BOS.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.Core.dll">
+      <HintPath>..\lib\Kingdee.BOS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.Web.dll">
+      <HintPath>..\lib\Kingdee.BOS.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.Web.Core.dll">
+      <HintPath>..\lib\Kingdee.BOS.Web.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.K3.FIN.ServiceHelper.dll">
+      <HintPath>..\lib\Kingdee.K3.FIN.ServiceHelper.dll</HintPath>
+    </Reference>
+	
+    <Reference Include="CSharp.jspxnet.dll">
+      <HintPath>..\lib\CSharp.jspxnet.dll</HintPath>
+    </Reference>
+
+    <Reference Include="kingdee.Cyext.dll">
+      <HintPath>..\lib\kingdee.Cyext.dll</HintPath>
+    </Reference>
+    <Reference Include="JinianNet.JNTemplate.dll">
+      <HintPath>..\lib\JinianNet.JNTemplate.dll</HintPath>
+    </Reference>
+	
+    <Reference Include="Kingdee.BOS.ServiceFacade.KDServiceClient.dll">
+      <HintPath>..\lib\Kingdee.BOS.ServiceFacade.KDServiceClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Kingdee.BOS.ServiceFacade.KDServiceClientFx.dll">
+      <HintPath>..\lib\Kingdee.BOS.ServiceFacade.KDServiceClientFx.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services.dll">
+      <HintPath>..\lib\System.Web.Services.dll</HintPath>
+    </Reference>	
+</ItemGroup>
+
+<ItemGroup>
+  <Folder Include="Properties\" />
+  <Folder Include="System\" />
+</ItemGroup>
+</Project>

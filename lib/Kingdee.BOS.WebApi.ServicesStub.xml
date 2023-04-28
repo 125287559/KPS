@@ -1,0 +1,1994 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kingdee.BOS.WebApi.ServicesStub</name>
+    </assembly>
+    <members>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.AIService">
+            <summary>
+            机器人指令服务
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AIService.DoRobotTask(System.String,System.String,System.String,System.String,System.String,System.String,Kingdee.BOS.ClientType)">
+            <summary>
+            执行机器人指令
+            </summary>
+            <param name="client_id">客户ID</param>
+            <param name="client_secret">客户秘钥</param>
+            <param name="access_token">执行令牌</param>
+            <param name="dbid">数据中心ID</param>
+            <param name="keyWord">指令名称</param>
+            <param name="jsonParameter">指令参数</param>
+            <param name="clientType">客户端类型</param>
+            <returns>执行结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AIService.DoRobotTask(System.String,System.String,Kingdee.BOS.ClientType)">
+            <summary>
+            执行机器人指令
+            </summary>
+            <param name="keyWord">指令名称</param>
+            <param name="jsonParameter">指令参数</param>
+            <param name="clientType">客户端类型</param>
+            <returns>执行结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AIService.DoAITask(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            执行AI平台指令
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="client_id"></param>
+            <param name="client_secret"></param>
+            <param name="access_token"></param>
+            <param name="dbid"></param>
+            <param name="jsonParameter"></param>
+            <param name="clientType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ApiLimitUtil.InvokeAndLimit(Kingdee.BOS.Context,System.Func{System.Object})">
+            <summary>
+            调用接口并做限流控制
+            </summary>
+            <param name="ctx"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ApiLimitUtil.InvokeAndLimit(Kingdee.BOS.Context,System.Func{System.Collections.Generic.List{System.Collections.Generic.List{System.Object}}})">
+            <summary>
+            调用接口并做限流控制
+            </summary>
+            <param name="ctx"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUserEnDeCodeByOrgNumber(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            可指定登录组织的登录接口
+            </summary>
+            <param name="acctID"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="lcid"></param>
+            <param name="orgNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUserByOrgNumber(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            可指定登录组织的登录接口
+            </summary>
+            <param name="acctID"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="lcid"></param>
+            <param name="orgNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUserByWXTicket(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            使用微信ticket校验用户
+            </summary>
+            <param name="acctID">用户数据中心id</param>
+            <param name="acctoken">用户token</param>
+            <param name="ticket">微信用户ticket</param>
+            <param name="lcid">语言</param>
+            <returns>用户登录情况和sessionID</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUserByXunTongTicket(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            使用云之家tick校验用户
+            </summary>
+            <param name="acctID">用户数据中心id</param>
+            <param name="eid">团队id</param>
+            <param name="appid">轻应用id</param>
+            <param name="ticket">云之家ticket</param>
+            <param name="lcid">多语言</param>
+            <returns>是否交易成功</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUserByThirdTicket(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            第三方系统获取用户登录sessionID
+            </summary>
+            <param name="acctID">用户数据中心id</param>
+            <param name="content">用户信息</param>
+            <param name="signature">签名</param>
+            <param name="lcid">多语言</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.LoginByAppSecret(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="acctID"></param>
+            <param name="username"></param>
+            <param name="appId"></param>
+            <param name="appSecret"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.DoLoginByAppSecret(System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            本方法仅供 Api网关调用，有特殊要求
+            </summary>
+            <param name="acctID"></param>
+            <param name="username"></param>
+            <param name="appId"></param>
+            <param name="appSecret"></param>
+            <param name="orgNum"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.LoginBySign(System.String,System.String,System.String,System.Int64,System.String,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="acctID"></param>
+            <param name="username"></param>
+            <param name="appId"></param>
+            <param name="timestamp"></param>
+            <param name="sign"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.LoginBySimplePassport(System.String,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="passportForBase64">证书(Base64编码)</param>
+            <param name="lcid">多语言ID</param>
+            <returns>登录结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.LoginByMobileCard(System.String,System.String,System.Int32)">
+            <summary>
+            移动刷卡登陆
+            </summary>
+            <param name="passportForBase64">卡的加密信息</param>
+            <param name="customizationParameter">自定义参数</param>
+            <param name="lcid">多语言id</param>
+            <returns>登陆结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.LoginByAppSecret2(System.String,System.String,System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="acctID"></param>
+            <param name="username"></param>
+            <param name="appId"></param>
+            <param name="appSecret"></param>
+            <param name="isKickOff"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.LoginBySign2(System.String,System.String,System.String,System.Int64,System.String,System.Boolean,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="acctID"></param>
+            <param name="username"></param>
+            <param name="appId"></param>
+            <param name="timestamp"></param>
+            <param name="sign"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.LoginByRSASign(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            通过RSA加密授权登录
+            </summary>
+            <param name="acctID">数据中心id</param>
+            <param name="entryrole">登录类型</param>
+            <param name="jsonInfo">加密信息</param>
+            <param name="lcid">语言信息</param>
+            <returns>登录结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.LoginBySimplePassport2(System.String,System.Boolean,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="passportForBase64">证书(Base64编码)</param>
+            <param name="lcid">多语言ID</param>
+            <returns>登录结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.SetDefaultOrg(Kingdee.BOS.Context,Kingdee.BOS.Authentication.LoginInfo,System.Collections.Generic.List{Kingdee.BOS.Core.Permission.Organization})">
+            <summary>
+            设置默认组织
+            </summary>
+            <param name="ctxnew">上下文</param>
+            <param name="loginInfo">登录信息</param>
+            <param name="orgList">当前用户所在的组织列表</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateWebApiSysParam(Kingdee.BOS.Authentication.LoginResult@)">
+            <summary>
+            设计初想：把这个方法耦合到ValidateLoginInfo，但LoginByRSAAuth方法仅限轻分析调用
+            轻分析不判断此系统参数
+            从解耦看，不耦合了，带来的影响：调用端修改代码稍多
+            </summary>
+            <param name="result"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.AuthService.DisabledNoThirdLogin">
+            <summary>
+            根据配置禁用非第三方登陆接口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.AbstractWebApiBusinessService">
+            <summary>
+            webapi业务抽象服务 
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.BBCService">
+            <summary>
+            BBC分销服务
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.ServicesStub.BBCService.PARAMETER_REGION">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.ServicesStub.BBCService.PARAMETER_KEY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.ServicesStub.BBCService.XML_PUBLIC_KEY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.ServicesStub.BBCService.XML_PRIVATE_KEY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.ServicesStub.BBCService.DBCONN_ENCRYPT_KEY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Kingdee.BOS.WebApi.ServicesStub.BBCService.DBCONN_ENCRYPT_NEW_KEY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.BBCService.GetBBCDbConfig(System.String)">
+            <summary>
+            获取bbc的配置信息
+            </summary>
+            <param name="host">域名</param>
+            <returns>bbc的配置信息</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.BBCService.GetBBCDataCenter(System.String)">
+            <summary>
+            获取BBC数据中心的连接字符串
+            </summary>
+            <param name="host">域名</param>
+            <returns>BBC数据中心的连接字符串</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.BBCService.SetBBCDataCenter(System.String,System.String)">
+            <summary>
+            设置BBC数据中心
+            </summary>
+            <param name="host">域名</param>
+            <param name="dbId">BBC数据中心ID</param>
+            <returns>BBC数据中心的连接字符串</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.BBCService.GetBBCDataCenterInfo(System.String)">
+            <summary>
+            获取BBC数据中心的连接字符串
+            </summary>
+            <param name="host">域名</param>
+            <returns>BBC数据中心的连接字符串</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.BBCService.SetBBCDataCenterHost(System.String,System.String)">
+            <summary>
+            设置BBC数据中心
+            </summary>
+            <param name="host">域名</param>
+            <param name="dbId">BBC数据中心ID</param>
+            <returns>BBC数据中心的连接字符串</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.BBCService.GetBCCDataCenterInfo(Kingdee.BOS.Context,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ctx"></param>
+            <param name="host"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.BBCService.GetBCCDataCenter(Kingdee.BOS.Context,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ctx"></param>
+            <param name="host"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.BBCService.GetBCCDataCenterList(Kingdee.BOS.Context)">
+            <summary>
+            
+            </summary>
+            <param name="ctx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.BBCService.SaveBCCDataCenterList(Kingdee.BOS.Context,System.Collections.Generic.List{Kingdee.BOS.WebApi.ServicesStub.BBCService.BBCDataCenterInfo})">
+            <summary>
+            
+            </summary>
+            <param name="ctx"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.BBCService.BBCDataCenterInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.BBCService.BBCDataCenterInfo.DbId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.BBCService.BBCDataCenterInfo.Host">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.CommonDataService">
+            <summary>
+            通用数据服务接口
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.LoginByUserToken(System.String,System.String)">
+            <summary>
+            根据userToken获取登录信息
+            </summary>
+            <param name="userToken"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.GetLicenseVerifier(Kingdee.BOS.Context,System.String)">
+            <summary>
+            判断是否授权：演示版=3、客户是否购买轻分析模块(是=0，否=2)。
+            嵌入式轻分析只需判断是否购买了轻分析模块。
+            主题式轻分析判断用户有权限由轻分析调用IncreaseLicense判断
+            </summary>
+            <param name="ctx"></param>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.ValidateByOpenToken(System.String,System.String)">
+            <summary>
+            根据云之家openToken获取登录信息
+            </summary>
+            <param name="openToken"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.GetXunTongOpenID(System.String,System.String)">
+            <summary>
+            获取云之家OpenId
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.GetTreeViewData(System.String,System.String)">
+            <summary>
+            获取实体目录树
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.GetFormMetaData(System.String,System.String)">
+            <summary>
+            获取实体结构
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.GetEntryData(System.String,System.String)">
+            <summary>
+            获取实体数据
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.GetTemporaryTableState(System.String,System.String)">
+            <summary>
+            获取临时表状态
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.DropTemporaryTable(System.String,System.String)">
+            <summary>
+            删除临时表
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.GetSchedule(System.String,System.String)">
+            <summary>
+            获取后台服务
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.InsertSchedule(System.String,System.String)">
+            <summary>
+            新增后台服务
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.TestSchedule(System.String,System.String)">
+            <summary>
+            测试后台服务
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.DeleteSchedule(System.String,System.String)">
+            <summary>
+            删除指定后台服务
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.GetLicenseItems(System.String,System.String)">
+            <summary>
+            返回所有购买的许可
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.CommonDataService.GetUserLicenseGroup(System.String,System.String)">
+            <summary>
+            返回当前用户的许可组
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService">
+            <summary>
+            Intelligence Data Service(IDS)智能数据服务器
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.LoginByUserToken(System.String,System.String)">
+            <summary>
+            根据userToken获取登录信息
+            </summary>
+            <param name="userToken"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.SetIntelligenceDataConfig(Kingdee.BOS.BusinessEntity.ResultInfo{Kingdee.BOS.WebApi.FormService.LoginResultJson})">
+            <summary>
+            设置轻分析专用参数
+            </summary>
+            <param name="resultInfo"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.GetTreeViewData(System.String,System.String)">
+            <summary>
+            获取实体目录树
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.GetFormMetaData(System.String,System.String)">
+            <summary>
+            获取实体结构
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.GetEntryData(System.String,System.String)">
+            <summary>
+            获取实体数据
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.GetTemporaryTableState(System.String,System.String)">
+            <summary>
+            获取临时表状态
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.DropTemporaryTable(System.String,System.String)">
+            <summary>
+            删除临时表
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.GetSchedule(System.String,System.String)">
+            <summary>
+            获取执行计划
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.InsertSchedule(System.String,System.String)">
+            <summary>
+            新增执行计划
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.TestSchedule(System.String,System.String)">
+            <summary>
+            测试执行计划
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.DeleteSchedule(System.String,System.String)">
+            <summary>
+            删除执行计划
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.GetEntryDataAsyn(System.String,System.String)">
+            <summary>
+            调用执行计划取数接口
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.LicenseDetailInfo.LicenseItem">
+            <summary>
+            所有已购买的许可
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.LicenseDetailInfo.LicenseTypeInfo">
+            <summary>
+            许可类型
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.IntelligenceDataService.LicenseDetailInfo.BuyModuleUrl">
+            <summary>
+            购买链接
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.VisualIdentityService">
+            <summary>
+            视觉识别服务
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.InternalAbstractWebApiService">
+            <summary>
+            内部专用webapi抽象服务 
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.InternalAuthService">
+            <summary>
+            内部专用认证Api服务类
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.InternalAuthService.LoginByAppSecret(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="acctID"></param>
+            <param name="username"></param>
+            <param name="appId"></param>
+            <param name="appSecret"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.InternalAuthService.LoginByAppSecret2(System.String,System.String,System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            第三方系统登录授权
+            </summary>
+            <param name="acctID"></param>
+            <param name="username"></param>
+            <param name="appId"></param>
+            <param name="appSecret"></param>
+            <param name="isKickOff"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExcuteOperation(System.String,System.String,System.String)">
+            <summary>
+            服务接口
+            </summary>
+            <param name="formid"></param>
+            <param name="opNumber"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteOperation(System.String,System.String,System.String)">
+            <summary>
+            服务接口
+            </summary>
+            <param name="formid"></param>
+            <param name="opNumber"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Save(System.String,System.String)">
+            <summary>
+            保存
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.BatchSave(System.String,System.String)">
+            <summary>
+            批量保存
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Audit(System.String,System.String)">
+            <summary>
+            审核
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Delete(System.String,System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.UnAudit(System.String,System.String)">
+            <summary>
+            反审核
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Submit(System.String,System.String)">
+            <summary>
+            提交
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.CancelAssign(System.String,System.String)">
+            <summary>
+            撤销
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.View(System.String,System.String)">
+            <summary>
+            查看
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.StatusConvert(System.String,System.String)">
+            <summary>
+            状态转换
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ctx"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Draft(System.String,System.String)">
+            <summary>
+            暂存
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.LoadSysParameter(System.String)">
+            <summary>
+            读取系统参数
+            </summary>
+            <param name="formid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Allocate(System.String,System.String)">
+            <summary>
+            分配
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.CancelAllocate(System.String,System.String)">
+            <summary>
+            取消分配
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.FlexSave(System.String,System.String)">
+            <summary>
+            弹性域保存
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.SendMsg(System.String)">
+            <summary>
+            发送消息
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.UploadFile(System.String)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.AttachmentUpload(System.String)">
+            <summary>
+            上传附件
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.AttachmentDownLoad(System.String)">
+            <summary>
+            下载附件
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.Push(System.String,System.String)">
+            <summary>
+            下推接口
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.GroupSave(System.String,System.String)">
+            <summary>
+            分组保存
+            </summary>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.QueryBusinessInfo(System.String)">
+            <summary>
+            元数据查询接口
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.QueryGroupInfo(System.String)">
+            <summary>
+            分组查询
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.WorkFlowQuickAudit(System.Int64,System.String[])">
+            <summary>
+            工作流快捷审批
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.WorkFlowQuickAuditByFormId(System.Int64,System.String,System.String[])">
+            <summary>
+            工作流快捷审批
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.WorkFlowQuickRejectByFormId(System.Int64,System.String,System.String[])">
+            <summary>
+            工作流快捷驳回
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.GetSysReportData(System.String,System.String)">
+            <summary>
+            获取报表数据
+            </summary>
+            <param name="formid"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.LicService">
+            <summary>
+            许可服务
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LicService.GetSoftwareUniqueCode">
+            <summary>
+            获取软件特征码
+            </summary>
+            <returns>软件特征码</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LicService.GetBBCLic(System.String)">
+            <summary>
+            获取全渠道营销许可
+            </summary>
+            <param name="softwareUniqueCode">软件特征码</param>
+            <returns>全渠道营销许可</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LicService.GetLicenseItems">
+            <summary>
+            获取许可购买清单
+            </summary>
+            <returns>许可购买清单</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LicService.GetLicenseType(System.String)">
+            <summary>
+            获取许可类型
+            </summary>
+            <param name="tenantId">租户ID</param>
+            <returns>许可类型信息</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.ValidateByUserToken(System.String,System.Int64)">
+            <summary>
+            根据userToken获取登录信息
+            </summary>
+            <param name="userToken"></param>
+            <param name="magicNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.LoginByCode(System.String,System.String)">
+            <summary>
+            根据userToken获取登录信息
+            </summary>
+            <param name="userToken"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.SetQingConfig(Kingdee.BOS.BusinessEntity.ResultInfo{Kingdee.BOS.WebApi.FormService.LoginResultJson})">
+            <summary>
+            设置轻分析专用参数
+            </summary>
+            <param name="resultInfo"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.ValidateByOpenToken(System.String,System.String,System.Int32)">
+            <summary>
+            根据云之家openToken获取登录信息
+            </summary>
+            <param name="openToken"></param>
+            <param name="host">云之家租客域名</param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.ValidateUserByXunTongTicket(System.String)">
+            <summary>
+            获取云之家OpenId
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetXunTongOpenID(System.String)">
+            <summary>
+            获取云之家OpenId
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetTreeViewData(System.String)">
+            <summary>
+            获取实体目录树
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetFormMetaData(System.String,System.String)">
+            <summary>
+            获取实体结构
+            </summary>
+            <param name="sessionId"></param>
+            <param name="formId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetEntryData(System.String,System.String)">
+            <summary>
+            获取实体数据
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.InsertSchedule(System.String,System.String)">
+            <summary>
+            新增执行计划
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.DeleteSchedule(System.String,System.String)">
+            <summary>
+            删除执行计划
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.TimerElapsed(System.String)">
+            <summary>
+            心跳
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.IncreaseLicense(System.String)">
+            <summary>
+            兼容注册用户模式+大并发模式 
+            是否有许可接口（如果大并发模式，会自动占用许可，formId为单据id，如果没有，可以虚拟一个固定的值，释放时，需要传入同样的formId）
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.ReleaseLicense(System.String)">
+            <summary>
+            释放许可接口(大并发时，关闭单据时，许可调这个接口释放这个单据对应的许可）
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetIsSolutionControlPolicy(System.String)">
+            <summary>
+            是否大并发模式
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetUserList(System.String)">
+            <summary>
+            获取所有用户列表(FUserId,FName)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetRoleList(System.String)">
+            <summary>
+            获取所有角色列表
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetUserRole(System.String,System.Boolean)">
+            <summary>
+            获取当前用户角色
+            </summary>
+            <param name="sessionId"></param>
+            <param name="bOnlyInCurrOrg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetMainSystemMenu(System.String)">
+            <summary>
+            获取主菜单
+            </summary>
+            <param name="sessionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetUserOrganization(System.String)">
+            <summary>
+            获取当前用户组织范围
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.WriteLog(System.String,System.String)">
+            <summary>
+            上机操作日志
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.PermissionAuthForQing(System.String)">
+            <summary>
+            获取轻分析权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetQingMailUrls(System.String,System.String)">
+            <summary>
+            获取轻分析邮件Url
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetLicenseItems(System.String,System.String)">
+            <summary>
+            返回所有购买的许可
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetUserLicenseGroup(System.String,System.String)">
+            <summary>
+            返回当前用户的许可组
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetFormFilterScheme(System.String,System.String,System.String)">
+            <summary>
+            获取过滤方案
+            </summary>
+            <param name="sessionId"></param>
+            <param name="formId"></param>
+            <param name="filterSchemeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetFormMetaDataForEmbedded(System.String,System.String,System.String,System.String)">
+            <summary>
+            获取嵌入式轻分析实体结构
+            </summary>
+            <param name="sessionId"></param>
+            <param name="formId"></param>
+            <param name="controlId"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.LightAnalysisService.GetEntryDataForEmbedded(System.String,System.String,System.String,System.String)">
+            <summary>
+            获取嵌入式轻分析数据
+            </summary>
+            <param name="sessionId"></param>
+            <param name="formId"></param>
+            <param name="data"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.MCService">
+            <summary>
+            管理中心服务
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.MCService.GetDataCenterList">
+            <summary>
+            获取数据中心列表
+            </summary>
+            <returns>数据中心列表</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.MCService.GetMobileDataCenterList">
+            <summary>
+            获取数据中心移动帐套列表
+            </summary>
+            <returns>数据中心列表</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.MCService.IsDeployAsPublicCloud">
+            <summary>
+            是否云ERP
+            </summary>
+            <returns>是、否</returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.MobileCardSimplePassport">
+            <summary>
+            移动置定卡集成证书
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.MobileCardSimplePassport.DbNumber">
+            <summary>
+            db 编码
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.MobileService.Login(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            登录
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="acctID"></param>
+            <param name="lcid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.MobileService.GetBaseDataList(System.String)">
+            <summary>
+            获取基础资料列表数据
+            </summary>
+            <param name="ctx"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.NLPService.QueryKeyWord(Kingdee.BOS.Context,System.String,System.String)">
+            <summary>
+            查找关键字对象
+            </summary>
+            <param name="ctx"></param>
+            <param name="appId"></param>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.NLPService.QueryKeyWord(Kingdee.BOS.Context,System.String)">
+            <summary>
+            查找关键字对象
+            </summary>
+            <param name="ctx"></param>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.NLPService.BuildRobotTask(Kingdee.BOS.Context,Kingdee.BOS.Orm.DataEntity.DynamicObject,System.String)">
+            <summary>
+            组装消息任务
+            </summary>
+            <param name="ctx"></param>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.NLPService.IsLogin(System.String)">
+            <summary>
+            是否已经登录
+            </summary>
+            <param name="access_token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.OAuth2">
+            <summary>
+            OAuth2.0
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OAuth2.GetAccessToken(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            获取access_tolen
+            </summary>
+            <param name="client_id">客户端id</param>
+            <param name="client_secret">客户端秘钥</param>
+            <param name="dbid">数据中心id</param>
+            <param name="username">用户名</param>
+            <param name="password">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OAuth2.RefreshAccessToken(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            刷新access_tolen
+            </summary>
+            <param name="client_id">客户端id</param>
+            <param name="client_secret">客户端秘钥</param>
+            <param name="access_token">访问令牌</param>
+            <param name="refresh_token">访问令牌有效时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OAuth2.LoginByAccessToken(System.String,System.String,System.String,System.String)">
+            <summary>
+            access_tolen验证登录
+            </summary>
+            <param name="client_id">客户端id</param>
+            <param name="client_secret">客户端秘钥</param>
+            <param name="access_token">访问令牌</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OrganizationService.GetOrganization(System.String,System.String,System.Int32)">
+            <summary>
+            查询组织部门WebApi接口
+            </summary>
+            <param name="dbId"></param>
+            <param name="dbNumber"></param>
+            <param name="localeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OrganizationService.GetDepartmentsByOrg(System.Int32,Kingdee.BOS.WebApi.ServicesStub.OrganizationDepartmenDto,System.Collections.Generic.List{Kingdee.BOS.WebApi.ServicesStub.OrganizationDepartmenDto})">
+            <summary>
+            根据组织查询部门
+            </summary>
+            <param name="departMentControlType"></param>
+            <param name="parentOrg"></param>
+            <param name="departments"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OrganizationService.GetDepartmentsByFirstDepartment(System.Int32,Kingdee.BOS.WebApi.ServicesStub.OrganizationDepartmenDto,System.Collections.Generic.List{Kingdee.BOS.WebApi.ServicesStub.OrganizationDepartmenDto})">
+            <summary>
+            根据一级部门查询下级部门
+            </summary>
+            <param name="departMentControlType"></param>
+            <param name="parentDepartment"></param>
+            <param name="departments"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OrganizationService.GetDepartMentControlType(Kingdee.BOS.Context)">
+            <summary>
+            查询部门控制策略类型
+            </summary>
+            <param name="ctx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OrganizationService.GetOrganizations(Kingdee.BOS.Context,System.Int32)">
+            <summary>
+            查询组织数据
+            </summary>
+            <param name="ctx"></param>
+            <param name="localeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OrganizationService.GetDepartments(Kingdee.BOS.Context,System.Int32)">
+            <summary>
+            查询部门数据
+            </summary>
+            <param name="ctx"></param>
+            <param name="localeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OrganizationService.ObjectCollectionsToList(Kingdee.BOS.Orm.DataEntity.DynamicObjectCollection,System.Int32)">
+            <summary>
+             ObjectCollections转换为列表
+            </summary>
+            <param name="orgObjs"></param>
+            <param name="dataType"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.OrganizationDepartmenDto.FIsAccountOrg">
+            <summary>
+            是否核算组织
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.OrganizationDepartmenDto.FAcctOrgType">
+            <summary>
+            核算类型
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.OrganizationDepartmenDto.FIsBusinessOrg">
+            <summary>
+            是否业务组织
+            </summary>
+        </member>
+        <!-- 对于成员“M:Kingdee.BOS.WebApi.ServicesStub.OSSService.PutLog(System.String)”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Kingdee.BOS.WebApi.ServicesStub.OSSService.BatchPutLog(System.String)”忽略有格式错误的 XML 注释 -->
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.OSSService.BatchPutLogByGroup(System.String)">
+            <summary>
+            分组推送日志
+            </summary>
+            <param name="logInfos"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.ProclaimText">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ProclaimText.DoProclaimText(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="proclaimText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ProclaimText.DoProclaimText2(System.String)">
+            <summary>
+            对字符串进行解密
+            </summary>
+            <param name="proclaimText"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.ProuctVersionService">
+            <summary>
+            产品版本服务 
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ProuctVersionService.#ctor(Kingdee.BOS.ServiceFacade.KDServiceFx.KDServiceContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ProuctVersionService.GetDataCenterVer(System.String)">
+            <summary>
+            获取当前指定数据中心版本
+            </summary>
+            <param name="dataCenterId">数据中心Id</param>
+            <returns>获取成功返回Successful=true,result=20.10.0.1;否则返回Successful=false</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ProuctVersionService.GetProductVer">
+            <summary>
+            获取当前系统产品版本
+            </summary>
+            <returns>获取成功返回Successful=true,result=20.10.0.1;否则返回Successful=false</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ProuctVersionService.ValidateDataCenterVer(System.String,System.String)">
+            <summary>
+            校验数据中心版本可用性
+            </summary>
+            <param name="dataCenterId">数据中心Id</param>
+            <param name="validateVer">校验版本</param>
+            <returns>可用Availability=1；否则Availability=0</returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.ShareCenterService">
+            <summary>
+            共享服务
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ShareCenterService.UpdateImageState(System.String)">
+            <summary>
+            更新影像扫描状态
+            </summary>
+            传入参数JSON：
+            [[
+                {
+                    "State": 1,
+                    "Barcode": "TEST201608310000001"
+                }
+            ]]
+            返回参数JSON：
+            {
+                "OutIsSuccess": true,
+                "OutSuccessMsg": "SuccessMsg",
+                "OutFailMsg": "FailMsg",
+                "OutList": [
+                    {
+                        "Barcode": "TEST201608310000001",
+                        "IsSuccess": true,
+                        "SuccessMsg": "SuccessMsg",
+                        "FailMsg": "FailMsg"
+                    }
+                ]
+            }
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.SMSService">
+            <summary>
+            短信服务
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.SMSService.SendMsg(System.String,System.String,System.String)">
+            <summary>
+            发送短信
+            </summary>
+            <param name="mobile">手机号</param>
+            <param name="msg">短信内容</param>
+            <param name="userid">接收人</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.SMSService.SendMsg2(System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            发送短信
+            </summary>
+            <param name="mobile">手机号 多个以英文分号隔开</param>
+            <param name="msg">短信内容</param>
+            <param name="userid">发送人ID</param>
+            <param name="messgeDetail">业务详情 不能为空 10字以内</param>
+            <param name="messageType">业务类型 默认为云短信 ：0 业务预警 ,1 短信验证码, 2 工作流, 3 其它, 5 广播消息, 7 云短信, 8 业务操作</param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.StaffPostService">
+            <summary>
+            员工、岗位服务
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.StaffPostService.GetSuperior(System.String,System.Int32)">
+            <summary>
+            获取直接上级人
+            </summary>
+            <param name="postNumber">岗位编码</param>
+            <param name="useOrgId">使用组织</param>
+            <returns>直接上级岗位、编码</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.StaffPostService.GetWebAPIContext(Kingdee.BOS.Context)">
+            <summary>
+            获取web api 上下文
+            </summary>
+            <param name="sourceContext"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.UserService">
+            <summary>
+            用户服务
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.GetUserIdByTelNo(System.String,System.String)">
+            <summary>
+            根据手机号+用户名获取用户ID
+            </summary>
+            <param name="mobile">手机号</param>
+            <param name="userName">用户名</param>
+            <returns>用户ID</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.ResetPwd(System.Int64,System.String)">
+            <summary>
+            设置密码
+            </summary>
+            <param name="userId">用户id</param>
+            <param name="password">密码</param>
+            <returns>设置结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.ResetUserPassWord(System.Int64,System.String)">
+            <summary>
+            修改用户密码
+            </summary>
+            <param name="userid">用户Id</param>
+            <param name="password">密码信息</param>
+            <returns>是否修改成功</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.GetPolicyLabel">
+            <summary>
+            获取密码策略标签
+            </summary>
+            <returns>密码策略标签</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.CheckPassword(System.String,System.String)">
+            <summary>
+            校验密码策略查看密码是否符合密码规则
+            </summary>
+            <param name="password">密码</param>
+            <param name="dbid">数据中心id</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.GetVImageInfo4CookieOnly">
+            <summary>
+            获取验证码图片（以适应CookieOnly的情况）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.CheckUserName(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            校验用户名称
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="dbid">数据中心ID</param>
+            <param name="inputCode">验证码</param>
+            <param name="lcid">语言id</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.CheckPhoneNum(System.String,System.String)">
+            <summary>
+            校验手机号
+            </summary>
+            <param name="inputPhone">输入手机号</param>
+            <param name="guid">前端传回guid</param>
+            <returns>返回数据</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.CheckMailAddress(System.String,System.String)">
+            <summary>
+            校验邮箱
+            </summary>
+            <param name="inputMail">输入邮箱</param>
+            <param name="guid">前端传回guid</param>
+            <returns>返回数据</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.SendPhoneIdentiCode(System.String)">
+            <summary>
+            发送手机验证码
+            </summary>
+            <param name="guid">guid</param>
+            <returns>返回数据</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.SendMailIdentiCode(System.String)">
+            <summary>
+            发送邮件验证码
+            </summary>
+            <param name="guid">guid</param>
+            <returns>返回数据</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.CheckIdentiCode(System.String,System.String,System.String)">
+            <summary>
+            校验输入的验证码
+            </summary>
+            <param name="phoneOrMail">手机:"0",邮箱:"1"</param>
+            <param name="guid">guid</param>
+            <param name="inputCode">输入的验证码</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.ResetPassword(System.String,System.String,System.String,Kingdee.BOS.ClientType,System.String)">
+            <summary>
+            重新设置密码
+            </summary>
+            <param name="newPassword">新密码</param>
+            <param name="confirmPassword">确认新密码</param>
+            <param name="guid">guid</param>
+            <param name="clientType">客户端类型</param>
+            <param name="sendMethor">发送验证码方式 "0":手机 "1":邮箱</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.BindThirdUser(System.String,System.String)">
+            <summary>
+            绑定第三方应用的用户映射
+            </summary>
+            <param name="content"></param>
+            <param name="signature"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.SaveSuccessStatistic(Kingdee.BOS.ClientType,System.String,Kingdee.BOS.BusinessEntity.ForgetPassword.ForgetPwdUserInfo,Kingdee.BOS.Context)">
+            <summary>
+            修改密码成功存统计表
+            </summary>
+            <param name="clientType">客户端类型</param>
+            <param name="sendMethor">发送方式</param>
+            <param name="fuser">用户信息</param>
+            <param name="ctx">上下文</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.RegUserSyncByUserIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            根据用户名称同步用户信息
+            </summary>
+            <param name="userNames">用户名称</param>
+            <returns>同步结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.ValidatePassword(System.String,System.String,System.Int64,System.String)">
+            <summary>
+            校验密码
+            </summary>
+            <param name="newPassword">新密码</param>
+            <param name="confirmPassword">确认新密码</param>
+            <param name="userID">用户id</param>
+            <param name="dbid">数据中心id</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.GetVerCode(System.Int32)">
+            <summary>
+            生成随机数字
+            </summary>
+            <param name="Length">生成长度</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.GetVCodeImageByte">
+            <summary>
+            获取验证码图片
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.SetDefaultOrg(Kingdee.BOS.Context,System.Int64,System.String)">
+            <summary>
+            给上下文设置组织
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="userid">用户id</param>
+            <param name="userName">用户名称</param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.SetCheckTimesCache(System.String,System.Int32)">
+            <summary>
+            设置校验尝试次数缓存
+            </summary>
+            <param name="guid">guid</param>
+            <param name="times">次数</param>
+            <returns>缓存次数</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.SetCheckPhoneTimesCache(System.String,System.Int32)">
+            <summary>
+            设置校验手机号尝试次数缓存
+            </summary>
+            <param name="guid">guid</param>
+            <param name="times">次数</param>
+            <returns>缓存次数</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.GetMarketSupplyUser">
+            <summary>
+            获取供需集市用户信息
+            </summary>
+            <returns>供需集市用户信息</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.HideSensitiveInfo(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            隐藏敏感信息
+            </summary>
+            <param name="info">信息实体</param>
+            <param name="left">左边保留的字符数</param>
+            <param name="right">右边保留的字符数</param>
+            <param name="basedOnLeft">当长度异常时，是否显示左边 </param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.HideSensitiveInfo(System.String,System.Int32,System.Boolean)">
+            <summary>
+            隐藏敏感信息
+            </summary>
+            <param name="info">信息</param>
+            <param name="sublen">信息总长与左子串（或右子串）的比例</param>
+            <param name="basedOnLeft">当长度异常时，是否显示左边，默认true，默认显示左边</param>
+            <code>true</code>显示左边，<code>false</code>显示右边
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.HideEmailDetails(System.String,System.Int32)">
+            <summary>
+            隐藏邮件详情
+            </summary>
+            <param name="email">邮件地址</param>
+            <param name="left">邮件头保留字符个数，默认值设置为3</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.UserService.ClearTimesCache(System.String)">
+            <summary>
+            清除临时缓存
+            </summary>
+            <param name="guid"></param>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.ValidateAvailabilityResult">
+            <summary>
+            校验可用性结果
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.ValidateAvailabilityResult.#ctor">
+            <summary>
+            校验可用性结果
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.ValidateAvailabilityResult.Availability">
+            <summary>
+            是否有效可用
+            1-可用
+            0-不可用
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.ValidateAvailabilityResult.Code">
+            <summary>
+            1:版本高于产品版本
+            -1:低于产品版本
+            0:正常
+            2:其他异常
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.ValidateAvailabilityResult.Message">
+            <summary>
+            消息内容
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.WarnLightAppWeApi">
+            <summary>
+            业务预警轻应用web api
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.WarnLightAppWeApi.#ctor(Kingdee.BOS.ServiceFacade.KDServiceFx.KDServiceContext)">
+            <summary>
+            
+            </summary>
+            <param name="ctx"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.WarnLightAppWeApi.GetYZJCard(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="roleid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.WarnLightAppWeApi.GetDebugData">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.WarnLightAppWeApi.GetSummaryMessage(Kingdee.BOS.Context,System.String,System.Collections.Generic.List{Kingdee.BOS.Core.Warn.LlightApp.SummaryMessage})">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.WarnLightAppWeApi.GetTopWarnSolutionIds(Kingdee.BOS.Context)">
+            <summary>
+            
+            </summary>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.WarnLightAppWeApi.GetWarnSolutionIds(Kingdee.BOS.Context,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ct"></param>
+            <param name="roleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.WarnLightAppWeApi.TryRoleWarnIdsFromConfiguration(Kingdee.BOS.Context,System.String,System.Collections.Generic.List{System.String}@)">
+            <summary>
+            从配置中获取方案Id
+            </summary>
+            <param name="ctx"></param>
+            <param name="roleId"></param>
+            <param name="warnIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.WarnLightAppWeApi.Convert(System.Collections.Generic.List{Kingdee.BOS.Core.Warn.LlightApp.SummaryMessage},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="summyMsgList"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService">
+            <summary>
+            云之家服务
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.SetLightAppDataCenter(System.String)">
+            <summary>
+            设置轻应用帐套
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="dbid">数据中心ID</param>
+            <param name="tenantId">租户id(可选）用于云ERP</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.SetYunZhiJiaConfig(System.String)">
+            <summary>
+            设置云之家公网地址和是否发送消息
+            </summary>
+            <param name="jsonInfo">序列化参数信息</param>
+            <returns>是否设置成功</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.SetYunZhiJiaSendMsg(System.Boolean)">
+            <summary>
+            设置云之家公网地址和是否发送消息
+            </summary>
+            <param name="jsonInfo">序列化参数信息</param>
+            <returns>是否设置成功</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.SetYunZhiJia(System.String,System.String)">
+            <summary>
+            设置云之家
+            </summary>
+            <param name="dbid">数据中心ID</param>
+            <param name="eid">云之家企业id</param>
+            <param name="host">k/3cloud服务器地址</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.GetLightAppLicOccupyInfo(System.String)">
+            <summary>
+            获取轻应用占用许可
+            </summary>
+            <param name="paramStr">许可占用参数</param>
+            <returns>许可占用情况</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.GetLightAppLicInfo(System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            获取轻应用占用许可
+            调用方法:
+            1.获取产品产品中配置团队轻应用许可
+            只需传参： appId、userId、IsDefault=true
+            2.获取其它团队轻应用许可
+            必传参数：appId、eid、accessToken、openId、IsDefault=false
+            </summary>
+            <param name="ctx">上下文</param>
+            <param name="appIds">轻应用id</param>
+            <param name="eid">团队id</param>
+            <param name="token">云之家token</param>
+            <returns>获取轻应用许可信息</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.CallBack(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            云之家回调函数，回填云之家信息
+            </summary>
+            <param name="DBId">数据库id</param>
+            <param name="AppId">应用id</param>
+            <param name="AppSecret">应用密钥</param>
+            <param name="AuthCode">云之家授权码</param>
+            <param name="Eid">云之家团队id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.GetYunZhiJiaInfo">
+            <summary>
+            获取云之家配置参数
+            </summary>
+            <returns>云之家配置参数</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.GetYunZhiJiaInfobydbid(System.String)">
+            <summary>
+            通过DBID获取云之家配置
+            </summary>
+            <param name="dbid">数据中心id</param>
+            <returns>云之家配置</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.GetYZJConnectInfo(System.String)">
+            <summary>
+            获取云之家是否可以连接
+            </summary>
+            <returns>云之家链接信息</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.GetYZJMsgInfo">
+            <summary>
+            获取各数据中心能否发送云之家消息
+            </summary>
+            <returns>云之家消息信息</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.BatchDealTodo(System.String,System.String)">
+            <summary>
+            批量处理待办消息信息
+            </summary>
+            <param name="param">参数信息</param>
+            <param name="sign">加密后信息</param>
+            <returns>处理结果</returns>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.CallWorkFlowQuickAudit(Kingdee.BOS.Context,System.Collections.Generic.List{System.String})">
+            <summary>
+            调用云之家快捷审批
+            </summary>
+            <param name="ctx"></param>
+            <param name="sourceIds"></param>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YunZhiJiaService.GetDbid">
+            <summary>
+            获取数据中心id
+            </summary>
+            <param name="query">回调参数</param>
+            <returns>dbid</returns>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.YZJDataResult">
+            <summary>
+            云之家卡片结果
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YZJDataResult.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJDataResult.success">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJDataResult.errorCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJDataResult.message">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJDataResult.version">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJDataResult.data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.YZJData">
+            <summary>
+            云之家卡片数据
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YZJData.#ctor">
+            <summary>
+            卡片数据
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJData.cardUnread">
+            <summary>
+            显示卡片未读标记
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJData.cardExpired">
+            <summary>
+            根据卡片的配置隐藏或者折叠
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJData.cardUpdatetime">
+            <summary>
+            time temp
+            13位时间戳，决定卡片的顺序
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJData.cardData">
+            <summary>
+            卡片数据
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.YZJCard">
+            <summary>
+            云之家card数据
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.YZJCard.#ctor">
+            <summary>
+            卡片数据
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.YZJCard.cards">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo">
+            <summary>
+            预警卡片信息
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo.Model">
+            <summary>
+            显示方式（1：展示一个统计字段模式，2：展示两个统计字段模式，3：展示3个统计字段模式） 
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo.Contents">
+            <summary>
+            多个字段列表内容
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo.LinkUrl">
+            <summary>
+            链接地址
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo.Id">
+            <summary>
+            数据ID
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo.ReadyStatus">
+            <summary>
+            未读/已读(0/1)
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo.FontColor">
+            <summary>
+            标题颜色
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo.Levle">
+            <summary>
+            卡片级别
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnCardInfo.CardId">
+            <summary>
+            卡片Id
+            </summary>
+        </member>
+        <member name="T:Kingdee.BOS.WebApi.ServicesStub.WarnContentLine">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Kingdee.BOS.WebApi.ServicesStub.WarnContentLine.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnContentLine.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnContentLine.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:Kingdee.BOS.WebApi.ServicesStub.WarnContentLine.Name">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>
